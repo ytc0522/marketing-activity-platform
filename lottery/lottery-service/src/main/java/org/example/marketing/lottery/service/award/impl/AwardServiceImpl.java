@@ -1,9 +1,10 @@
 package org.example.marketing.lottery.service.award.impl;
 
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.example.service.award.Award;
-import org.example.service.service.AwardService;
-import org.example.service.mapper.AwardMapper;
+import org.example.marketing.lottery.repository.entity.Award;
+import org.example.marketing.lottery.repository.mapper.AwardMapper;
+import org.example.marketing.lottery.service.award.AwardService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class AwardServiceImpl extends ServiceImpl<AwardMapper, Award>
-    implements AwardService{
+    implements AwardService {
 
 }
 
