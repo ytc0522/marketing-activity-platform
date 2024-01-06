@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+
+# 数据库配置
+
+
+# Mybatis
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      id-type: ID_WORKER
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      insert-strategy: NOT_NULL
+      update-strategy: NOT_NULL
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: rootroot
+    url: jdbc:mysql://hadoop101:3306/marketing_activity
