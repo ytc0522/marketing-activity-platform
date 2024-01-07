@@ -1,10 +1,10 @@
-package org.example.marketing.lottery.service.award.impl;
+package org.example.marketing.lottery.domain.award.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.example.marketing.lottery.repository.entity.Award;
 import org.example.marketing.lottery.repository.mapper.AwardMapper;
-import org.example.marketing.lottery.service.award.AwardService;
+import org.example.marketing.lottery.domain.award.AwardService;
 import org.springframework.stereotype.Service;
 
 /**

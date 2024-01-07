@@ -1,4 +1,4 @@
-package org.example.marketing.lottery.service.award;
+package org.example.marketing.lottery.domain.award;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.marketing.lottery.repository.entity.Award;

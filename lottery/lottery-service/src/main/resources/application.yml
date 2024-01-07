@@ -1,0 +1,35 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: rootroot
+    url: jdbc:mysql://hadoop101:3306/marketing_lottery
+  redis:
+    database: 0
+    host: hadoop101     # Redis服务器地址，修改为你的地址
+    port: 6379          # Redis服务器连接端口
+    password:           # Redis服务器连接密码（默认为空）
+    timeout: 3000       # Redis服务器链接超时配置
+
+# nacos 配置中心
+nacos:
+  discovery:
+    server-addr: hadoop101:8848
+
+# Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
+dubbo:
+  application:
+    name: Lottery
+    version: 1.0.0
+  #    parameters:
+  #      unicast: false
+  registry:
+    address: nacos://hadoop101:8848
+  protocol:
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: org.example.marketing.lottery.rpc
