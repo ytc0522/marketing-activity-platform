@@ -1,4 +1,4 @@
-package org.example.activity.repository.activity;
+package org.example.activity.repository.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

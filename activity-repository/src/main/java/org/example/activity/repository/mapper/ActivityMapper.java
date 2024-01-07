@@ -1,7 +1,7 @@
 package org.example.activity.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.example.activity.repository.activity.Activity;
+import org.example.activity.repository.entity.Activity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

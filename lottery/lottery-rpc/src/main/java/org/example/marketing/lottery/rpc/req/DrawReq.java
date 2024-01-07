@@ -6,7 +6,7 @@ public class DrawReq implements Serializable {
 
     private String userId;
 
-    private Long activityId;
+    private Long lotteryId;
 
     public String getUserId() {
         return userId;
@@ -16,11 +16,11 @@ public class DrawReq implements Serializable {
         this.userId = userId;
     }
 
-    public Long getActivityId() {
-        return activityId;
+    public Long getLotteryId() {
+        return lotteryId;
     }
 
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
+    public void setLotteryId(Long lotteryId) {
+        this.lotteryId = lotteryId;
     }
 }

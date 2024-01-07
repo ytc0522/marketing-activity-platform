@@ -2,7 +2,7 @@ package org.example.activity.admin.service.impl;
 
 
 import org.example.activity.admin.service.ActivityService;
-import org.example.activity.repository.activity.Activity;
+import org.example.activity.repository.entity.Activity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

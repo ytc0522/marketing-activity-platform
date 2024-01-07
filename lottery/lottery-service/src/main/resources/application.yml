@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: rootroot
-    url: jdbc:mysql://hadoop101:3306/marketing_lottery
+    url: jdbc:mysql://hadoop101:3306/marketing_activity
   redis:
     database: 0
     host: hadoop101     # Redis服务器地址，修改为你的地址

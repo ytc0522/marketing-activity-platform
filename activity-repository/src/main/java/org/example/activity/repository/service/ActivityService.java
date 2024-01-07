@@ -1,6 +1,6 @@
 package org.example.activity.repository.service;
 
-import org.example.activity.repository.activity.Activity;
+import org.example.activity.repository.entity.Activity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

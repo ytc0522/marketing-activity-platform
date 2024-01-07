@@ -1,8 +1,7 @@
 package org.example.activity.admin.controller;
 
 import org.example.activity.admin.service.ActivityService;
-import org.example.activity.admin.service.impl.ActivityServiceImpl;
-import org.example.activity.repository.activity.Activity;
+import org.example.activity.repository.entity.Activity;
 import org.example.marketing.common.ActionResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

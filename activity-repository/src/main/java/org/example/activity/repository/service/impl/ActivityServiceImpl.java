@@ -1,7 +1,7 @@
 package org.example.activity.repository.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.example.activity.repository.activity.Activity;
+import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.service.ActivityService;
 import org.example.activity.repository.mapper.ActivityMapper;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,9 @@
-package org.example.activity.admin.service;
+package org.example.marketing.activity.consumer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.activity.repository.entity.Activity;
+import org.example.marketing.common.ActionResult;
+import org.example.marketing.common.req.activity.TakeActivityReq;
 
 /**
 * @author jack
@@ -9,5 +11,15 @@ import org.example.activity.repository.entity.Activity;
 * @createDate 2024-01-07 01:13:48
 */
 public interface ActivityService extends IService<Activity> {
+
+
+    /**
+     * 参加活动
+     * @param req
+     * @return
+     */
+    public ActionResult takeActivity(TakeActivityReq req);
+
+
 
 }

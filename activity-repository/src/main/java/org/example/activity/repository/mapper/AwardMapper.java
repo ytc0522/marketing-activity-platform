@@ -1,7 +1,8 @@
-package org.example.marketing.lottery.repository.mapper;
+package org.example.activity.repository.mapper;
 
-import org.example.marketing.lottery.repository.entity.Award;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.example.activity.repository.entity.Award;
 
 /**
 * @author jack

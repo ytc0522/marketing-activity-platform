@@ -7,6 +7,7 @@ import org.example.marketing.lottery.rpc.ILotteryDraw;
 import org.example.marketing.lottery.rpc.dto.AwardInfo;
 import org.example.marketing.lottery.rpc.req.DrawReq;
 import org.example.marketing.lottery.domain.award.AwardService;
+import org.example.marketing.lottery.service.LotteryDetailService;
 
 import javax.annotation.Resource;
 
@@ -17,12 +18,16 @@ public class LotteryFacade implements ILotteryDraw {
     @Resource
     private AwardService awardService;
 
+    @Resource
+    private LotteryDetailService lotteryDetailService;
+
 
     @Override
     public ActionResult<AwardInfo> draw(DrawReq req) {
+        Long lotteryId = req.getLotteryId();
 
-        // 写库，扣减库存
-        log.info("===== lottery facade ======");
+        //
+
 
 
         return ActionResult.success("finish");

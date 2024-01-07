@@ -1,0 +1,64 @@
+package org.example.marketing.lottery.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.example.marketing.common.ActionResult;
+import org.example.marketing.lottery.repository.entity.LotteryDetail;
+import org.example.marketing.lottery.repository.mapper.LotteryDetailMapper;
+import org.example.marketing.lottery.rpc.req.DrawReq;
+import org.example.marketing.lottery.service.LotteryDetailService;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+/**
+* @author jack
+* @description 针对表【lottery(策略明细)】的数据库操作Service实现
+* @createDate 2024-01-07 19:47:12
+*/
+@Service
+public class LotteryDetailServiceImpl extends ServiceImpl<LotteryDetailMapper, LotteryDetail>
+    implements LotteryDetailService {
+
+    private static String LOTTERY_AWARD_PREFIX_KEY = "LOTTERY_AWARD:";
+
+
+    @Resource
+    private RedisTemplate redisTemplate;
+
+
+    private void initToCache(Long lotteryId) {
+
+        Object obj = redisTemplate.opsForValue().get(LOTTERY_AWARD_PREFIX_KEY + lotteryId);
+        if (obj == null) {
+            LotteryDetail lotteryDetail = this.getById(lotteryId);
+            //redisTemplate.opsForValue().set();
+        }
+
+
+
+    }
+
+
+
+    @Override
+    public ActionResult draw(DrawReq req) {
+        Long lotteryId = req.getLotteryId();
+
+
+        // 初始化奖品数据到缓存中
+
+
+
+        LotteryDetail lotteryDetail = this.getById(lotteryId);
+
+
+
+
+        return null;
+    }
+}
+
+
+
+

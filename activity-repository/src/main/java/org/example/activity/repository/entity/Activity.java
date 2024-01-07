@@ -1,4 +1,4 @@
-package org.example.activity.repository.activity;
+package org.example.activity.repository.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -34,7 +34,7 @@ public class Activity implements Serializable {
     /**
      * 活动类型：1-抽奖 2-抢红包
      */
-    private Integer activityType;
+    private String activityType;
 
     /**
      * 活动描述
