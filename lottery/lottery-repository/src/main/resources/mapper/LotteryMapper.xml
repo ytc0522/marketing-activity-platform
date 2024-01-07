@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.marketing.lottery.repository.mapper.LotteryMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.marketing.lottery.repository.entity.Lottery">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="chanceType" column="chance_type" jdbcType="TINYINT"/>
+            <result property="grantType" column="grant_type" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,chance_type,grant_type,
+        create_time
+    </sql>
+</mapper>

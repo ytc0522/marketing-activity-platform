@@ -119,6 +119,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/lottery/pom.xml" />
+        <option value="$PROJECT_DIR$/lottery/lottery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/lottery/lottery-rpc/pom.xml" />
+        <option value="$PROJECT_DIR$/lottery/lottery-common/pom.xml" />
+        <option value="$PROJECT_DIR$/lottery/lottery-repository/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

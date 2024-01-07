@@ -27,7 +27,7 @@ public class ActivityServiceImplTest {
         activity.setActivityDesc("这是一个抽奖活动");
         activity.setActivityId(10010L);
         activity.setBeginDateTime(new Date());
-        activity.setActivityType(1);
+        activity.setActivityType("1");
         activity.setCreateTime(new Date());
         activity.setUpdateTime(new Date());
         activity.setState(5);

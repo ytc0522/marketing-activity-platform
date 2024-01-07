@@ -29,11 +29,6 @@ public class LotteryDetailServiceImpl extends ServiceImpl<LotteryDetailMapper, L
 
     private void initToCache(Long lotteryId) {
 
-        Object obj = redisTemplate.opsForValue().get(LOTTERY_AWARD_PREFIX_KEY + lotteryId);
-        if (obj == null) {
-            LotteryDetail lotteryDetail = this.getById(lotteryId);
-            //redisTemplate.opsForValue().set();
-        }
 
 
 
