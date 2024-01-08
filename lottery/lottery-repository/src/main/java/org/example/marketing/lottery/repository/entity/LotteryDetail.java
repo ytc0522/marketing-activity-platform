@@ -11,9 +11,9 @@ import lombok.Data;
 
 /**
  * 策略明细
- * @TableName lottery
+ * @TableName lottery_detail
  */
-@TableName(value ="lottery")
+@TableName(value ="lottery_detail")
 @Data
 public class LotteryDetail implements Serializable {
     /**

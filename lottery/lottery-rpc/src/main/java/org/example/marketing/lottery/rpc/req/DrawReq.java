@@ -1,10 +1,15 @@
 package org.example.marketing.lottery.rpc.req;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class DrawReq implements Serializable {
 
     private String userId;
+
+    private String activityId;
 
     private Long lotteryId;
 

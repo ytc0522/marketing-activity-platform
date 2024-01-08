@@ -29,7 +29,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     public ActionResult takeActivity(TakeActivityReq req) {
 
         Long activityId = req.getActivityId();
-        Activity activity = this.getById(activityId);
+        Activity activity = this.lambdaQuery().eq(Activity::getActivityId,activityId).one();
 
         if (activity == null) {
             return ActionResult.failure("活动不存在");
