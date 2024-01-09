@@ -1,6 +1,5 @@
 package org.example.marketing.lottery.domain.pool;
 
-import org.example.marketing.lottery.rpc.dto.AwardInfo;
 import org.example.marketing.lottery.rpc.dto.LotteryRich;
 
 /**
@@ -10,9 +9,10 @@ public interface IAwardPool {
 
 
     /**
-     * 初始化奖品池
+     * 刷新奖品池
      */
-    void initPool(LotteryRich lotteryRich);
+    void refreshPool(LotteryRich lotteryRich);
+
 
     /**
      * 抽出一个奖品

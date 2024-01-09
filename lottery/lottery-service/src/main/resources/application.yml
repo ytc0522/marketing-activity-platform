@@ -31,5 +31,7 @@ dubbo:
   protocol:
     name: dubbo
     port: -1
+    queues: 200
+    threads: 300
   scan:
     base-packages: org.example.marketing.lottery.rpc

@@ -4,15 +4,13 @@ import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -26,7 +24,7 @@ public class RedisUtil {
     }
 
 
-    public RedisTemplate<String,Object> redisTemplate() {
+    public RedisTemplate<String, Object> redisTemplate() {
         return redisTemplate;
     }
 
@@ -154,6 +152,26 @@ public class RedisUtil {
             return connection.setNX(key.getBytes(), String.valueOf(System.currentTimeMillis() + lockExpireMils + 1).getBytes());
         });
     }
+
+
+    public boolean lock(String key, String value, long lockExpireMils) {
+        return redisTemplate.opsForValue().setIfAbsent(key, value, lockExpireMils, TimeUnit.MILLISECONDS);
+    }
+
+    public boolean unlock(String key, String value) {
+        String script = "if redis.call(\"get\",KEYS[1]) == ARGV[1]\n" +
+                "then\n" +
+                "    return redis.call(\"del\",KEYS[1])\n" +
+                "else\n" +
+                "    return 0\n" +
+                "end";
+        DefaultRedisScript defaultRedisScript = new DefaultRedisScript();
+        defaultRedisScript.setScriptText(script);
+        defaultRedisScript.setResultType(Long.class);
+        Object execute = redisTemplate.execute(defaultRedisScript, Arrays.asList(key), value);
+        return true;
+    }
+
 
     /**
      * 递增
@@ -662,14 +680,14 @@ public class RedisUtil {
 
     //=========ZSet 用法 Begin============
 
-    public Set<ZSetOperations.TypedTuple<Object>> rangeWithScores(String key,long start,long end) {
+    public Set<ZSetOperations.TypedTuple<Object>> rangeWithScores(String key, long start, long end) {
         Set<ZSetOperations.TypedTuple<Object>> membersWithScores = redisTemplate.opsForZSet().rangeWithScores(key, start, end);
         return membersWithScores;
     }
 
 
-    public Boolean zSetAdd(String key,Object value,double score) {
-        return redisTemplate.opsForZSet().add(key,value,score);
+    public Boolean zSetAdd(String key, Object value, double score) {
+        return redisTemplate.opsForZSet().add(key, value, score);
     }
 
     public void execute(RedisScript script, List<Object> keys, List<Object> args) {

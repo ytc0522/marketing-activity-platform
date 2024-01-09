@@ -29,6 +29,13 @@ public class LotteryFacade implements ILotteryDraw {
 
 
     @Override
+    public ActionResult prepare(Long lotteryId) {
+        LotteryRich lotteryRich = lotteryService.refreshCache(lotteryId);
+        chanceAwardPool.refreshPool(lotteryRich);
+        return ActionResult.success();
+    }
+
+    @Override
     public ActionResult<AwardInfo> draw(DrawReq req) {
 
         // 从缓存中获取 抽奖相关信息
@@ -37,19 +44,14 @@ public class LotteryFacade implements ILotteryDraw {
         Long lotteryId = lotteryRich.getLottery().getId();
 
         // 计算抽奖结果，拿到奖项ID  这个时候缓存的库存已经扣减了
-        chanceAwardPool.initPool(lotteryRich);
         String awardId = chanceAwardPool.doDraw(lotteryId);
 
         if (Constants.NULL.equals(awardId)) {
             return ActionResult.success();
         }
-        // 更新 数据库库存， 这里要保证缓存和数据库中数据一致性
-        // 这里更新lottery_detail表
-        boolean isSuccess = lotteryService.deductStock(lotteryId, awardId);
-        // 如果扣减库存失败了，怎么处理？应该不会失败
-        if (!isSuccess) {
-            log.error("扣减数据库库存失败，lotteryId：{},awardId:{}", lotteryId, awardId);
-        }
+
+        // 表示用户已经抽到奖品了
+        log.info("用户：{} 参加抽奖,LotteryId:{}， 抽到奖品：{}", req.getUserId(), lotteryId, awardId);
 
         // 抽奖记录写入数据库
         // 写入 record表

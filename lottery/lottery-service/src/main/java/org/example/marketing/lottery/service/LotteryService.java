@@ -15,11 +15,17 @@ import org.example.marketing.lottery.rpc.req.DrawReq;
 public interface LotteryService extends IService<Lottery> {
 
 
+    LotteryRich refreshCache(Long lotteryId);
+
     LotteryRich getFromCache(Long lotteryId);
 
     /**
      * 扣减库存
+     * 是否需要幂等性扣减
      */
     boolean deductStock(Long lotteryId, String awardId);
+
+
+    boolean updateStockCount(Long lotteryId, String awardId,Long surplusCount);
 
 }

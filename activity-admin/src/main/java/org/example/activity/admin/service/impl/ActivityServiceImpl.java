@@ -2,9 +2,12 @@ package org.example.activity.admin.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.activity.admin.service.ActivityService;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.mapper.ActivityMapper;
+import org.example.marketing.common.ActionResult;
+import org.example.marketing.lottery.rpc.ILotteryDraw;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +19,18 @@ import org.springframework.stereotype.Service;
 public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     implements ActivityService {
 
+
+    @DubboReference
+    private ILotteryDraw lotteryDraw;
+
+
+    @Override
+    public ActionResult prepare(Long activityId) {
+        Activity activity = this.lambdaQuery().eq(Activity::getActivityId, activityId)
+                .one();
+        // todo 这里需要判断活动类型，先不做了
+        return lotteryDraw.prepare(activity.getStrategyId());
+    }
 }
 
 

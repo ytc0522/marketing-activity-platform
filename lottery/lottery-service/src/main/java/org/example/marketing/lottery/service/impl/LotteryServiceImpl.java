@@ -3,6 +3,7 @@ package org.example.marketing.lottery.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.additional.update.impl.LambdaUpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.lottery.repository.entity.Lottery;
@@ -39,6 +40,13 @@ public class LotteryServiceImpl extends ServiceImpl<LotteryMapper, Lottery>
     private RedisUtil redisUtil;
 
     private static String LOTTERY_KEY = "LOTTERY_KEY:";
+
+    @Override
+    public LotteryRich refreshCache(Long lotteryId) {
+        String lotteryCacheKey = LOTTERY_KEY + lotteryId;
+        redisUtil.del(lotteryCacheKey);
+        return getFromCache(lotteryId);
+    }
 
     @Override
     public LotteryRich getFromCache(Long lotteryId) {
@@ -78,8 +86,18 @@ public class LotteryServiceImpl extends ServiceImpl<LotteryMapper, Lottery>
         updateWrapper.setSql("award_surplus_count = award_surplus_count - 1");
         updateWrapper.eq("lottery_id",lotteryId);
         updateWrapper.eq("award_id",awardId);
+        updateWrapper.gt("award_surplus_count",0);
 
         return lotteryDetailService.update(updateWrapper);
+    }
+
+    @Override
+    public boolean updateStockCount(Long lotteryId, String awardId, Long surplusCount) {
+
+        boolean update = lotteryDetailService.lambdaUpdate().eq(LotteryDetail::getLotteryId, lotteryId)
+                .eq(LotteryDetail::getAwardId, awardId)
+                .set(LotteryDetail::getAwardSurplusCount, surplusCount).update();
+        return update;
     }
 }
 

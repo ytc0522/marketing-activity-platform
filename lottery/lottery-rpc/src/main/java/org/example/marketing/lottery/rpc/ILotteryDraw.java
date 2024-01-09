@@ -9,6 +9,8 @@ import org.example.marketing.lottery.rpc.req.DrawReq;
  */
 public interface ILotteryDraw {
 
+    ActionResult prepare(Long lotteryId);
+
     ActionResult<AwardInfo> draw(DrawReq req);
 
 }
