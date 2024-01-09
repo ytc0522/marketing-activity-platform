@@ -10,6 +10,7 @@ import org.example.activity.repository.mapper.ActivityMapper;
 import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.example.marketing.activity.consumer.service.AwardService;
+import org.example.marketing.activity.consumer.utils.SnowFlakeUtil;
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.common.enums.ActivityType;
 import org.example.marketing.common.req.activity.TakeActivityReq;
@@ -40,6 +41,9 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
 
     @Resource
     private UserActivityOrderService userActivityOrderService;
+
+    @Resource
+    private SnowFlakeUtil snowFlakeUtil;
 
 
     @Override
@@ -83,8 +87,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         userActivityOrder.setActivityType(activityType);
         userActivityOrder.setStrategyId(activity.getStrategyId());
 
-        // OrderId 用哪种实现比较好
-        userActivityOrder.setOrderId(UUID.randomUUID().toString());
+        // OrderId 采用雪花算法生成
+        userActivityOrder.setOrderId(String.valueOf(snowFlakeUtil.snowflakeId()));
 
         // 奖品信息
         userActivityOrder.setAwardId(winAward.getAwardId());
