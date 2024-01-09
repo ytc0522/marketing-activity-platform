@@ -3,6 +3,7 @@ package org.example.marketing.lottery.domain.pool;
 import cn.hutool.core.lang.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.example.marketing.lottery.repository.util.RedisUtil;
+import org.example.marketing.lottery.rpc.constants.Constants;
 import org.example.marketing.lottery.rpc.dto.LotteryDetailDto;
 import org.example.marketing.lottery.rpc.dto.LotteryRich;
 import org.example.marketing.lottery.service.LotteryService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -99,6 +101,15 @@ public class FixChanceAwardPool implements IAwardPool,IAwardStock {
                 // 初始化奖项库存
                 redisUtil.hset(awardStockKey, AWARD_ID_KEY + e.getAwardId(), e.getAwardSurplusCount());
             });
+
+            // 如果奖品的总概率不足1，则需要补充空的奖品填充到总概率为1。不然概率就会不准确
+            BigDecimal totalRate = detailList.stream().map(LotteryDetailDto::getAwardRate).reduce(BigDecimal.ZERO, BigDecimal::add);
+            if (BigDecimal.ONE.compareTo(totalRate) > 0) {
+                // 剩余的概率用NULL填充，表示未中奖
+                BigDecimal nullRate = BigDecimal.ONE.subtract(totalRate);
+                redisUtil.zSetAdd(lotteryPoolKey, Constants.NULL,nullRate.doubleValue());
+            }
+
         } finally {
             redisUtil.unlock(lockKey,lockValue);
         }

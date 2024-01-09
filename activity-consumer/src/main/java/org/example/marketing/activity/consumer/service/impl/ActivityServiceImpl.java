@@ -69,7 +69,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
             ActionResult<WinAward> lotteryResult = lotteryDraw.draw(drawReq);
             // 未中奖
             winAward = lotteryResult.getValue();
-            if (!lotteryResult.isSuccess() || winAward == null || "NULL".equals(winAward.getAwardId())) {
+            if (!lotteryResult.isSuccess() || winAward == null || winAward.getAwardId() == null) {
                 return result;
             }
         }

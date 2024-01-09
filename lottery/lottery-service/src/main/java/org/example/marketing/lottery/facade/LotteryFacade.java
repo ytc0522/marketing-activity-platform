@@ -49,7 +49,7 @@ public class LotteryFacade implements ILotteryDraw {
         String awardId = chanceAwardPool.doDraw(lotteryId);
 
         if (Constants.NULL.equals(awardId)) {
-            return ActionResult.success();
+            return ActionResult.success(new WinAward());
         }
 
         // 表示用户已经抽到奖品了
