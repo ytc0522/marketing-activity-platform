@@ -27,9 +27,19 @@ public class LotteryDetailDto implements Serializable {
     private String awardName;
 
     /**
+     * 奖品类型
+     */
+    private String awardType;
+
+    /**
      * 奖品库存
      */
     private Integer awardCount;
+
+    /**
+     * 奖品内容
+     */
+    private String awardContent;
 
     /**
      * 奖品剩余库存

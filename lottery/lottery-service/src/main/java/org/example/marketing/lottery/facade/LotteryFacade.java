@@ -10,6 +10,7 @@ import org.example.marketing.lottery.rpc.constants.Constants;
 import org.example.marketing.lottery.rpc.dto.AwardInfo;
 import org.example.marketing.lottery.rpc.dto.LotteryDetailDto;
 import org.example.marketing.lottery.rpc.dto.LotteryRich;
+import org.example.marketing.lottery.rpc.dto.WinAward;
 import org.example.marketing.lottery.rpc.req.DrawReq;
 import org.example.marketing.lottery.service.LotteryDetailService;
 import org.example.marketing.lottery.service.LotteryService;
@@ -36,10 +37,11 @@ public class LotteryFacade implements ILotteryDraw {
     }
 
     @Override
-    public ActionResult<AwardInfo> draw(DrawReq req) {
+    public ActionResult<WinAward> draw(DrawReq req) {
 
         // 从缓存中获取 抽奖相关信息
         LotteryRich lotteryRich = lotteryService.getFromCache(req.getLotteryId());
+
 
         Long lotteryId = lotteryRich.getLottery().getId();
 
@@ -53,10 +55,17 @@ public class LotteryFacade implements ILotteryDraw {
         // 表示用户已经抽到奖品了
         log.info("用户：{} 参加抽奖,LotteryId:{}， 抽到奖品：{}", req.getUserId(), lotteryId, awardId);
 
-        // 抽奖记录写入数据库
-        // 写入 record表
-        // todo
 
-        return ActionResult.success(awardId);
+        List<LotteryDetailDto> details = lotteryRich.getLotteryDetailDtoList();
+        LotteryDetailDto detail = details.stream().filter((e) -> e.getAwardId().equals(awardId)).findFirst().get();
+
+        WinAward winAward = new WinAward();
+        winAward.setAwardId(awardId);
+        winAward.setAwardName(detail.getAwardName());
+        winAward.setAwardType(detail.getAwardType());
+        winAward.setAwardContent(detail.getAwardContent());
+        winAward.setGrantType(lotteryRich.getLottery().getGrantType());
+
+        return ActionResult.success(winAward);
     }
 }

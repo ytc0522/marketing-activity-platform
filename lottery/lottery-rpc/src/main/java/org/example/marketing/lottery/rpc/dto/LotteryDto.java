@@ -17,7 +17,7 @@ public class LotteryDto {
     /**
      * 发放奖励类型：0:立即发放，1-结束后发放，2-人工发放
      */
-    private Integer grantType;
+    private String grantType;
 
     /**
      *

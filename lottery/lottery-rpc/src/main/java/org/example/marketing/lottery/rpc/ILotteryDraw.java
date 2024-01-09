@@ -2,6 +2,7 @@ package org.example.marketing.lottery.rpc;
 
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.lottery.rpc.dto.AwardInfo;
+import org.example.marketing.lottery.rpc.dto.WinAward;
 import org.example.marketing.lottery.rpc.req.DrawReq;
 
 /**
@@ -11,6 +12,6 @@ public interface ILotteryDraw {
 
     ActionResult prepare(Long lotteryId);
 
-    ActionResult<AwardInfo> draw(DrawReq req);
+    ActionResult<WinAward> draw(DrawReq req);
 
 }

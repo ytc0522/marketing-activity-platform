@@ -54,11 +54,15 @@ public class ActionResult<T> implements Serializable {
     }
 
     public static ActionResult failure(String errMsg) {
-        return new ActionResult(ErrorCode.FAILURE,errMsg);
+        return new ActionResult(ErrorCode.FAILURE, errMsg);
     }
 
     public static ActionResult error() {
         return new ActionResult(ErrorCode.UN_KNOWN_EXCEPTION);
+    }
+
+    public boolean isSuccess() {
+        return ErrorCode.SUCCESS.getCode() == this.getErrCode();
     }
 
 
