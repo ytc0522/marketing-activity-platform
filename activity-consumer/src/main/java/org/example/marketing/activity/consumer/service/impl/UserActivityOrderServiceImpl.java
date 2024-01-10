@@ -53,10 +53,10 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
         userActivityOrder.setUpdateTime(new Date());
 
         String orderString = JSON.toJSONString(userActivityOrder);
-        log.info("正在保存活动订单:{}", JSON.toJSONString(orderString));
+        log.info("【保存活动订单】{}", JSON.toJSONString(orderString));
         boolean saved = this.save(userActivityOrder);
         if (!saved) {
-            log.error("保存活动订单失败!orderId:{}", userActivityOrder.getOrderId());
+            log.error("【保存活动订单失败】orderId:{}", userActivityOrder.getOrderId());
         }
         return userActivityOrder;
     }

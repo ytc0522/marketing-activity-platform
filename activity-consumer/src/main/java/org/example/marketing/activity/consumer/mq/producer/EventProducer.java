@@ -28,11 +28,10 @@ public class EventProducer {
         } else {
             message = MessageBuilder.withPayload(msg).build();
         }
+        log.info("【事件发布】{}", message);
         boolean published = source.output().send(message);
-        if (published) {
-            log.info("订单事件发送成功：" + msg);
-        } else {
-            log.info("订单事件发送失败：" + msg);
+        if (!published) {
+            log.info("【事件发布失败】：" + event.getEventId());
         }
     }
 
