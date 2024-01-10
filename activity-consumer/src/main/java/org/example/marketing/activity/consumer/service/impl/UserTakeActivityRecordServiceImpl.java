@@ -1,9 +1,9 @@
-package org.example.activity.repository.service.impl;
+package org.example.marketing.activity.consumer.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.example.activity.repository.entity.UserTakeActivityRecord;
-import org.example.activity.repository.service.UserTakeActivityRecordService;
 import org.example.activity.repository.mapper.UserTakeActivityRecordMapper;
+import org.example.marketing.activity.consumer.service.UserTakeActivityRecordService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class UserTakeActivityRecordServiceImpl extends ServiceImpl<UserTakeActivityRecordMapper, UserTakeActivityRecord>
-    implements UserTakeActivityRecordService{
+    implements UserTakeActivityRecordService {
 
 }
 

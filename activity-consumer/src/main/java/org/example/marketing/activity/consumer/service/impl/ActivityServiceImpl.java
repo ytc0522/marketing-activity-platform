@@ -3,10 +3,13 @@ package org.example.marketing.activity.consumer.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.entity.UserActivityOrder;
+import org.example.activity.repository.entity.UserTakeActivityRecord;
 import org.example.activity.repository.mapper.ActivityMapper;
+import org.example.marketing.activity.consumer.service.UserTakeActivityRecordService;
 import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.example.marketing.activity.consumer.service.AwardService;
@@ -21,7 +24,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * @author jack
@@ -43,6 +45,9 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     private UserActivityOrderService userActivityOrderService;
 
     @Resource
+    private UserTakeActivityRecordService userTakeActivityRecordService;
+
+    @Resource
     private SnowFlakeUtil snowFlakeUtil;
 
 
@@ -56,9 +61,20 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
             return ActionResult.failure("活动不存在");
         }
 
-        // 校验活动时间
-        // 校验用户活动参与次数
-        // 风控-校验用户IP、用户ID是否在黑名单中。
+        // 校验活动时间：校验活动时间
+        // 校验用户活动参与次数： 查数据库比较
+        // 风控-校验用户IP、用户ID是否在黑名单中
+
+        // 插入活动领取记录表
+        UserTakeActivityRecord record = new UserTakeActivityRecord();
+        record.setActivityId(activityId);
+        record.setUserId(req.getUserId());
+        record.setState("0");
+        record.setTakeTime(new Date());
+        record.setCreateTime(new Date());
+        record.setUpdateTime(new Date());
+
+        userTakeActivityRecordService.save(record);
 
 
         // 活动类型
@@ -71,43 +87,25 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
             drawReq.setUserId(req.getUserId());
             drawReq.setLotteryId(activity.getStrategyId());
             ActionResult<WinAward> lotteryResult = lotteryDraw.draw(drawReq);
-            // 未中奖
             winAward = lotteryResult.getValue();
-            if (!lotteryResult.isSuccess() || winAward == null || winAward.getAwardId() == null) {
-                return result;
-            }
         }
 
-        // 中奖了
-        // 记录中奖记录，生成活动订单
-        UserActivityOrder userActivityOrder = new UserActivityOrder();
-        userActivityOrder.setOrderStatus("1");
-        // 活动信息
-        userActivityOrder.setActivityId(activityId);
-        userActivityOrder.setActivityType(activityType);
-        userActivityOrder.setStrategyId(activity.getStrategyId());
 
-        // OrderId 采用雪花算法生成
-        userActivityOrder.setOrderId(String.valueOf(snowFlakeUtil.snowflakeId()));
+        // 更新领取活动记录表
+        record.setState("1");
+        userTakeActivityRecordService.updateById(record);
 
-        // 奖品信息
-        userActivityOrder.setAwardId(winAward.getAwardId());
-        userActivityOrder.setAwardName(winAward.getAwardName());
-        userActivityOrder.setAwardContent(winAward.getAwardContent());
-        userActivityOrder.setAwardType(winAward.getAwardType());
-        userActivityOrder.setGrantType(winAward.getGrantType());
-        userActivityOrder.setCreateTime(new Date());
-        userActivityOrder.setUpdateTime(new Date());
+        // 增加用户参加的次数 更新用户活动次数表即可。
 
-        try {
-            boolean saved = userActivityOrderService.save(userActivityOrder);
-            if (!saved) {
-                log.error("保存活动订单失败,订单：{}", JSON.toJSONString(userActivityOrder));
-            }
-        } catch (Exception e) {
-            log.error("保存活动订单失败,订单：{}", JSON.toJSONString(userActivityOrder), e);
+
+        //
+        if (winAward == null || StringUtils.isEmpty(winAward.getAwardId())) {
+            // 未中奖
+            return result;
         }
 
+        // 中奖了 保存中奖订单
+        userActivityOrderService.saveWinAwardOrder(req.getUserId(), activity, winAward);
 
         return ActionResult.success(winAward);
     }

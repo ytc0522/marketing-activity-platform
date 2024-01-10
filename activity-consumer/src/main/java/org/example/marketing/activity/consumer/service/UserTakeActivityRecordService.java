@@ -1,4 +1,4 @@
-package org.example.activity.repository.service;
+package org.example.marketing.activity.consumer.service;
 
 import org.example.activity.repository.entity.UserTakeActivityRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
