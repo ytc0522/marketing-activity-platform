@@ -20,19 +20,27 @@ public class EventProducer {
     @Resource
     private Source source;
 
-    public void publish(Event event) {
-        String msg = JSON.toJSONString(event);
-        Message<String> message;
-        if (event.isDelayConsume()) {
-            message = MessageBuilder.withPayload(msg).setHeader("x-delay", (event).getDelayTime()).build();
-        } else {
-            message = MessageBuilder.withPayload(msg).build();
+    public boolean publish(Event event) {
+        boolean published = false;
+        try {
+            String msg = JSON.toJSONString(event);
+            Message<String> message;
+            if (event.isDelayConsume()) {
+                message = MessageBuilder.withPayload(msg).setHeader("x-delay", (event).getDelayTime()).build();
+            } else {
+                message = MessageBuilder.withPayload(msg).build();
+            }
+            log.info("【事件发布】{}", message);
+            published = source.output().send(message);
+            if (!published) {
+                log.info("【事件发布失败】：" + event.getEventId());
+            }
+        } catch (Exception e) {
+            log.error("【事件发送异常】{}", event.getEventId(), e);
         }
-        log.info("【事件发布】{}", message);
-        boolean published = source.output().send(message);
-        if (!published) {
-            log.info("【事件发布失败】：" + event.getEventId());
-        }
+
+
+        return published;
     }
 
 

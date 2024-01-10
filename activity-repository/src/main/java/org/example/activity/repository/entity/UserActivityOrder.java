@@ -82,6 +82,11 @@ public class UserActivityOrder implements Serializable {
     private String awardContent;
 
     /**
+     * 创建订单事件发送状态 0:未发送 1:已发送 2:发送失败
+     */
+    private String createEventSendState;
+
+    /**
      * 创建时间
      */
     private Date createTime;

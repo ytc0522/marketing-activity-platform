@@ -22,4 +22,5 @@ public interface UserActivityOrderService extends IService<UserActivityOrder> {
      */
     UserActivityOrder saveWinAwardOrder(String userId, Activity activity, WinAward winAward);
 
+    void publishCreateOrderEvent(UserActivityOrder userActivityOrder);
 }

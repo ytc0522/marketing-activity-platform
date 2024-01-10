@@ -48,9 +48,6 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     @Resource
     private UserTakeActivityRecordService userTakeActivityRecordService;
 
-    @Resource
-    private EventProducer eventProducer;
-
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -106,13 +103,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         // 中奖了 保存中奖订单
         UserActivityOrder userActivityOrder = userActivityOrderService.saveWinAwardOrder(req.getUserId(), activity, winAward);
 
-
-        // 发送MQ消息 通知其他系统 有用户中奖了
-        Event event = new Event();
-        event.setBody(userActivityOrder.getOrderId());
-        event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
-        eventProducer.publish(event);
-
+        // 发送MQ消息通知
+        userActivityOrderService.publishCreateOrderEvent(userActivityOrder);
 
         return ActionResult.success(winAward);
     }

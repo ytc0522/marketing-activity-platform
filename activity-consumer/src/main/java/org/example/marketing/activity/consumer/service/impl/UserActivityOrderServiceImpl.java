@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.entity.UserActivityOrder;
 import org.example.activity.repository.mapper.UserActivityOrderMapper;
+import org.example.marketing.activity.consumer.mq.Event;
+import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.utils.SnowFlakeUtil;
 import org.example.marketing.lottery.rpc.dto.WinAward;
@@ -27,6 +29,9 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
 
     @Resource
     private SnowFlakeUtil snowFlakeUtil;
+
+    @Resource
+    private EventProducer eventProducer;
 
     @Override
     public UserActivityOrder saveWinAwardOrder(String userId, Activity activity, WinAward winAward) {
@@ -59,6 +64,24 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
             log.error("【保存活动订单失败】orderId:{}", userActivityOrder.getOrderId());
         }
         return userActivityOrder;
+    }
+
+    @Override
+    public void publishCreateOrderEvent(UserActivityOrder userActivityOrder) {
+        // 发送MQ消息 通知其他系统 有用户中奖了
+        Event event = new Event();
+        event.setBody(userActivityOrder.getOrderId());
+        event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
+        boolean published = eventProducer.publish(event);
+        // 发送成功
+        if (published) {
+            // 更新
+            userActivityOrder.setCreateEventSendState("1");
+        } else {
+            //
+            userActivityOrder.setCreateEventSendState("2");
+        }
+        this.updateById(userActivityOrder);
     }
 }
 
