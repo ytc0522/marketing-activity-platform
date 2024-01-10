@@ -1,6 +1,5 @@
 package org.example.marketing.activity.consumer.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -9,11 +8,12 @@ import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.entity.UserActivityOrder;
 import org.example.activity.repository.entity.UserTakeActivityRecord;
 import org.example.activity.repository.mapper.ActivityMapper;
+import org.example.marketing.activity.consumer.mq.Event;
+import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.UserTakeActivityRecordService;
 import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.example.marketing.activity.consumer.service.AwardService;
-import org.example.marketing.activity.consumer.utils.SnowFlakeUtil;
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.common.enums.ActivityType;
 import org.example.marketing.common.req.activity.TakeActivityReq;
@@ -21,6 +21,7 @@ import org.example.marketing.lottery.rpc.ILotteryDraw;
 import org.example.marketing.lottery.rpc.dto.WinAward;
 import org.example.marketing.lottery.rpc.req.DrawReq;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -48,10 +49,11 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     private UserTakeActivityRecordService userTakeActivityRecordService;
 
     @Resource
-    private SnowFlakeUtil snowFlakeUtil;
+    private EventProducer eventProducer;
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ActionResult takeActivity(TakeActivityReq req) {
 
         Long activityId = req.getActivityId();
@@ -90,14 +92,11 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
             winAward = lotteryResult.getValue();
         }
 
-
         // 更新领取活动记录表
         record.setState("1");
         userTakeActivityRecordService.updateById(record);
 
         // 增加用户参加的次数 更新用户活动次数表即可。
-
-
         //
         if (winAward == null || StringUtils.isEmpty(winAward.getAwardId())) {
             // 未中奖
@@ -105,7 +104,15 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         }
 
         // 中奖了 保存中奖订单
-        userActivityOrderService.saveWinAwardOrder(req.getUserId(), activity, winAward);
+        UserActivityOrder userActivityOrder = userActivityOrderService.saveWinAwardOrder(req.getUserId(), activity, winAward);
+
+
+        // 发送MQ消息 通知其他系统 有用户中奖了
+        Event event = new Event();
+        event.setBody(userActivityOrder.getOrderId());
+        event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
+        eventProducer.publish(event);
+
 
         return ActionResult.success(winAward);
     }

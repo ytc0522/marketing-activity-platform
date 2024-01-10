@@ -29,7 +29,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
     private SnowFlakeUtil snowFlakeUtil;
 
     @Override
-    public boolean saveWinAwardOrder(String userId, Activity activity, WinAward winAward) {
+    public UserActivityOrder saveWinAwardOrder(String userId, Activity activity, WinAward winAward) {
         // 中奖了
         // 记录中奖记录，生成活动订单
         UserActivityOrder userActivityOrder = new UserActivityOrder();
@@ -58,7 +58,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
         if (!saved) {
             log.error("保存活动订单失败!orderId:{}", userActivityOrder.getOrderId());
         }
-        return saved;
+        return userActivityOrder;
     }
 }
 

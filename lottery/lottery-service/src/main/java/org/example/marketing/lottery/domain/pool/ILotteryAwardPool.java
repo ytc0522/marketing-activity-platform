@@ -4,8 +4,9 @@ import org.example.marketing.lottery.rpc.dto.LotteryRich;
 
 /**
  * 奖品池
+ *  只存放奖品和概率
  */
-public interface IAwardPool {
+public interface ILotteryAwardPool {
 
 
     /**

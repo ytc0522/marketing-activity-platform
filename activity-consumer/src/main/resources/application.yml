@@ -40,3 +40,19 @@ spring:
     username: root
     password: rootroot
     url: jdbc:mysql://hadoop101:3306/marketing_activity
+
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: hadoop101
+                port: 5672
+                username: root
+                password: 123456
+                virtual-host: marketing
+
+

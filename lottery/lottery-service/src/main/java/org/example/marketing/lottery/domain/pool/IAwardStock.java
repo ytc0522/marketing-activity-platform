@@ -10,7 +10,7 @@ public interface IAwardStock {
      *
      * @return
      */
-    public boolean deductStock(Long lotteryId, String awardId);
+    public Long deductStock(Long lotteryId, String awardId);
 
 
 

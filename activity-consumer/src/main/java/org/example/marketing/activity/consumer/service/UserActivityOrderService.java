@@ -20,6 +20,6 @@ public interface UserActivityOrderService extends IService<UserActivityOrder> {
      * @param winAward
      * @return
      */
-    boolean saveWinAwardOrder(String userId, Activity activity, WinAward winAward);
+    UserActivityOrder saveWinAwardOrder(String userId, Activity activity, WinAward winAward);
 
 }

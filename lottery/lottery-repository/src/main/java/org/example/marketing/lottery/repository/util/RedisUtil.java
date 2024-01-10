@@ -1,9 +1,6 @@
 package org.example.marketing.lottery.repository.util;
 
-import org.springframework.data.redis.core.BoundListOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
@@ -19,13 +16,19 @@ public class RedisUtil {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
     public RedisUtil(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
-
     public RedisTemplate<String, Object> redisTemplate() {
         return redisTemplate;
+    }
+
+    public StringRedisTemplate stringRedisTemplate() {
+        return stringRedisTemplate;
     }
 
     /**
@@ -331,7 +334,7 @@ public class RedisUtil {
      * @param by   要增加几(大于0)
      * @return
      */
-    public double hincr(String key, String item, double by) {
+    public Long hincr(String key, String item, Long by) {
         return redisTemplate.opsForHash().increment(key, item, by);
     }
 
@@ -688,6 +691,10 @@ public class RedisUtil {
 
     public Boolean zSetAdd(String key, Object value, double score) {
         return redisTemplate.opsForZSet().add(key, value, score);
+    }
+
+    public Long zSetRemove(String key, Object value) {
+        return redisTemplate.opsForZSet().remove(key, value);
     }
 
     public void execute(RedisScript script, List<Object> keys, List<Object> args) {
