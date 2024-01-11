@@ -70,6 +70,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
     public void publishCreateOrderEvent(UserActivityOrder userActivityOrder) {
         // 发送MQ消息 通知其他系统 有用户中奖了
         Event event = new Event();
+        event.setEventId(userActivityOrder.getOrderId());
         event.setBody(userActivityOrder.getOrderId());
         event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
         boolean published = eventProducer.publish(event);
@@ -78,7 +79,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
             // 更新
             userActivityOrder.setCreateEventSendState("1");
         } else {
-            //
+            // 发送失败的话，通过定时任务补偿处理
             userActivityOrder.setCreateEventSendState("2");
         }
         this.updateById(userActivityOrder);
