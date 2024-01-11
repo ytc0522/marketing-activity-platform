@@ -63,11 +63,24 @@ spring:
               acknowledge-mode: manual
       bindings:
         input:
-          destination: topicExchange
+          destination: ACTIVITY_EVENT_TOPIC
           group: ${spring.application.name}
         output:
           destination: topicExchange
           group: ${spring.application.name}
+
+xxl:
+  job:
+    admin:
+      addresses: http://hadoop101:8800/xxl-job-admin
+    executor:
+      appname: ${spring.application.name}
+      address:
+      ip:
+      port: 9999
+      logpath: /Users/jack/Development/data/logs/xxl-job/
+      logretentiondays: 30
+    accessToken: onelovehzs888
 
 
 

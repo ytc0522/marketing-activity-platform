@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-repository/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dispatch-job/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dispatch-job/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lottery/lottery-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lottery/lottery-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lottery/lottery-app/src/main/java" charset="UTF-8" />

@@ -128,6 +128,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/dispatch-job/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-api/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-app/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-domain/pom.xml" />
