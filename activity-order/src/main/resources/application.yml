@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8001
 
 
 # 设置nacos的地址（配置中心）
@@ -10,7 +10,7 @@ nacos:
 # Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
 dubbo:
   application:
-    name: marketing-activity-consumer
+    name: marketing-activity-order
     version: 1.0.0
   registry:
     address: nacos://hadoop101:8848
@@ -36,21 +36,13 @@ mybatis-plus:
 
 spring:
   application:
-    name: activity-consumer
+    name: activity-order
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: rootroot
     url: jdbc:mysql://hadoop101:3306/marketing_activity
 
-  #  # sharding-jdbc
-  #  shardingsphere:
-  #    datasource:
-  #      names: activity00,activity01
-  #      activity00:
-  #        type: com.zaxxer.hikari.HikariDataSource
-  #        driver-class-name: com.mysql.cj.jdbc.Driver
-  #        jdbc-url: jdbc:mysql://hadoop101:3306/marketing_activity_01
 
   cloud:
     stream:
@@ -78,18 +70,15 @@ spring:
           destination: ACTIVITY_EVENT_TOPIC
           group: ${spring.application.name}
 
-xxl:
-  job:
-    admin:
-      addresses: http://hadoop101:8800/xxl-job-admin
-    executor:
-      appname: ${spring.application.name}
-      address:
-      ip:
-      port: 9999
-      logpath: /Users/jack/Development/data/logs/xxl-job/
-      logretentiondays: 30
-    accessToken: onelovehzs888
+  # sharding-jdbc
+  shardingsphere:
+    datasource:
+      names: activity00,activity01
+      activity00:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://hadoop101:3306/marketing_activity_01
+
 
 
 

@@ -1,8 +1,9 @@
-package org.example.marketing.activity.consumer.mq.consumer;
+package org.example.marketing.activity.order.mq.consumer;
 
 import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.example.marketing.activity.order.event.EventProcess;
 import org.example.marketing.common.mq.Event;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -12,6 +13,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 @Slf4j
@@ -19,6 +21,9 @@ import java.io.IOException;
 @EnableBinding(Sink.class)
 public class EventConsumer {
 
+
+    @Resource
+    private EventProcess eventProcess;
 
     @EventListener
     @StreamListener(Sink.INPUT)
@@ -28,8 +33,16 @@ public class EventConsumer {
         Event event = message.getPayload();
         log.info("【监听事件】{}", JSON.toJSONString(event));
         try {
+            eventProcess.process(event);
             channel.basicAck(deliveryTag, false);
-        } catch (IOException e) {
+        } catch (Exception e) {
+            try {
+                if (channel != null) {
+                    channel.basicReject(deliveryTag, true); // 让消息变为ready状态,当requeue=false,会丢弃消息
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             throw new RuntimeException(e);
         }
 

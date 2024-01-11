@@ -3,8 +3,8 @@ package org.example.marketing.activity.consumer.mq.producer;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.example.activity.repository.entity.MqMsgSendFailRecord;
-import org.example.marketing.activity.consumer.mq.Event;
 import org.example.marketing.activity.consumer.service.MqMsgSendFailRecordService;
+import org.example.marketing.common.mq.Event;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
@@ -30,12 +30,7 @@ public class EventProducer {
         boolean published = false;
         try {
             String msg = JSON.toJSONString(event);
-            Message<String> message;
-            if (event.isDelayConsume()) {
-                message = MessageBuilder.withPayload(msg).setHeader("x-delay", (event).getDelayTime()).build();
-            } else {
-                message = MessageBuilder.withPayload(msg).build();
-            }
+            Message<String> message = MessageBuilder.withPayload(msg).build();
             log.info("【事件发布】{}", message);
             published = source.output().send(message);
         } catch (Exception e) {

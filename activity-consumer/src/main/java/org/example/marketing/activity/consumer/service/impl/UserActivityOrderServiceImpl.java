@@ -6,10 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.entity.UserActivityOrder;
 import org.example.activity.repository.mapper.UserActivityOrderMapper;
-import org.example.marketing.activity.consumer.mq.Event;
 import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.utils.SnowFlakeUtil;
+import org.example.marketing.common.mq.Event;
 import org.example.marketing.lottery.rpc.dto.WinAward;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +72,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
         Event event = new Event();
         event.setEventId(userActivityOrder.getOrderId());
         event.setBody(userActivityOrder.getOrderId());
-        event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
+        event.setType(Event.Type.ACTIVITY_ORDER_CREATED);
         eventProducer.publishWithRecord(event);
         this.updateById(userActivityOrder);
     }

@@ -3,6 +3,7 @@ package org.example.marketing.activity.consumer.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.activity.repository.entity.Activity;
 import org.example.marketing.common.ActionResult;
+import org.example.marketing.common.dto.UserWinAwardDto;
 import org.example.marketing.common.req.activity.TakeActivityReq;
 
 /**
@@ -19,6 +20,12 @@ public interface ActivityService extends IService<Activity> {
      * @return
      */
     public ActionResult takeActivity(TakeActivityReq req);
+
+
+    /**
+     * 发布 用户参加活动获得奖品 事件
+     */
+    public void publishWinAwardEvent(UserWinAwardDto winAwardDto);
 
 
 
