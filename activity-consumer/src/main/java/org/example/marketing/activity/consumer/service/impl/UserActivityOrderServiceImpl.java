@@ -73,15 +73,7 @@ public class UserActivityOrderServiceImpl extends ServiceImpl<UserActivityOrderM
         event.setEventId(userActivityOrder.getOrderId());
         event.setBody(userActivityOrder.getOrderId());
         event.setType(Event.Type.ACTIVITY_ORDER_CREATE);
-        boolean published = eventProducer.publish(event);
-        // 发送成功
-        if (published) {
-            // 更新
-            userActivityOrder.setCreateEventSendState("1");
-        } else {
-            // 发送失败的话，通过定时任务补偿处理
-            userActivityOrder.setCreateEventSendState("2");
-        }
+        eventProducer.publishWithRecord(event);
         this.updateById(userActivityOrder);
     }
 }
