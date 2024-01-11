@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.log.XxlJobLogger;
+import lombok.extern.slf4j.Slf4j;
 import org.example.activity.repository.entity.MqMsgSendFailRecord;
 import org.example.marketing.activity.consumer.mq.Event;
 import org.example.marketing.activity.consumer.mq.producer.EventProducer;
@@ -18,6 +19,7 @@ import java.util.List;
  * 事件发送失败 补偿任务
  */
 @Component
+@Slf4j
 public class MqMsgSendFailCompensationJob {
 
     @Resource
@@ -35,8 +37,9 @@ public class MqMsgSendFailCompensationJob {
      */
     @XxlJob(value = "compensation")
     public ReturnT<String> compensationHandler(String param) {
-        XxlJobLogger.log("MQ消息补偿任务正在执行...");
 
+        XxlJobLogger.log("MQ消息补偿任务正在执行...");
+        log.info("MQ消息补偿任务正在执行...");
         List<MqMsgSendFailRecord> failRecords = mqMsgSendFailRecordService.lambdaQuery()
                 .eq(MqMsgSendFailRecord::getState, "0")
                 .last("limit 100")
@@ -53,6 +56,7 @@ public class MqMsgSendFailCompensationJob {
             }
         }
         XxlJobLogger.log("MQ消息补偿任务执行完成。");
+        log.info("MQ消息补偿任务执行完成。");
         return ReturnT.SUCCESS;
     }
 
