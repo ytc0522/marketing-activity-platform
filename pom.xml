@@ -15,6 +15,7 @@
         <module>activity-admin</module>
         <module>activity-consumer</module>
         <module>activity-repository</module>
+        <module>activity-order</module>
     </modules>
 
 <!--    <parent>-->
@@ -123,8 +124,14 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+                <version>3.0.1.RELEASE</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>4.0.0-RC1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

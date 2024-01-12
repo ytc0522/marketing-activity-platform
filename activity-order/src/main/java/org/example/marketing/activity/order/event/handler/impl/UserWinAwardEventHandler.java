@@ -27,6 +27,7 @@ public class UserWinAwardEventHandler implements IEventHandler {
     private UserActivityOrderMapper orderMapper;
 
 
+
     @Override
     public void handle(Event event) {
         String jsonString = JSON.toJSONString(event.getBody());
@@ -38,6 +39,15 @@ public class UserWinAwardEventHandler implements IEventHandler {
         userActivityOrder.setCreateTime(new Date());
         userActivityOrder.setUpdateTime(new Date());
         orderMapper.insert(userActivityOrder);
+
+        // 发布订单创建事件
+        Event orderCreatedEvent = new Event();
+        orderCreatedEvent.setBody(userActivityOrder.getOrderId());
+        orderCreatedEvent.setType(Event.Type.ACTIVITY_ORDER_CREATED);
+
+
+
+
     }
 
     @Override

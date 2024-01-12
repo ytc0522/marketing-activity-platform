@@ -45,15 +45,14 @@ public class EventProducer {
      * @return
      */
     public void publishWithRecord(Event event) {
-        boolean published = publish(event);
-        if (!published) {
+        if (!publish(event)) {
             MqMsgSendFailRecord record = new MqMsgSendFailRecord();
             record.setState("0");
             record.setMsgContent(JSON.toJSONString(event));
             record.setSendTime(new Date());
-            boolean saved = recordService.save(record);
-            if (!saved) {
-                log.error("mq msg send fail and record to db fail");
+            if (!recordService.save(record)) {
+                // 如果走到了这里，消息没有发出去，又没有记录下来，这就相当于丢了，得记录下来。
+                log.error("mq msg send failed and record to db failed:{}", JSON.toJSONString(event));
             }
         }
     }
