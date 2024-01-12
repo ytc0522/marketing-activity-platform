@@ -5,13 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.activity.repository.entity.Activity;
-import org.example.activity.repository.entity.UserActivityOrder;
 import org.example.activity.repository.entity.UserTakeActivityRecord;
 import org.example.activity.repository.mapper.ActivityMapper;
 import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.example.marketing.activity.consumer.service.AwardService;
-import org.example.marketing.activity.consumer.service.UserActivityOrderService;
 import org.example.marketing.activity.consumer.service.UserTakeActivityRecordService;
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.common.dto.UserWinAwardDto;
@@ -42,9 +40,6 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
 
     @Resource
     private AwardService awardService;
-
-    @Resource
-    private UserActivityOrderService userActivityOrderService;
 
     @Resource
     private UserTakeActivityRecordService userTakeActivityRecordService;
@@ -107,12 +102,6 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         // 中奖了 保存中奖订单
         // 同步还是异步保存？这里可以通过MQ异步保存订单，然后在订单服务中发送订单已经创建的通知。
         publishWinAwardEvent(req.getUserId(), activity, winAward);
-
-        // 保存订单 todo 不能在这里保存订单
-        UserActivityOrder userActivityOrder = userActivityOrderService.saveWinAwardOrder(req.getUserId(), activity, winAward);
-
-        // 发送MQ消息通知
-        userActivityOrderService.publishCreateOrderEvent(userActivityOrder);
 
         return ActionResult.success(winAward);
     }

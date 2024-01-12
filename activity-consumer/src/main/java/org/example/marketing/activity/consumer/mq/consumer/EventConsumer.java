@@ -26,7 +26,7 @@ public class EventConsumer {
         Channel channel = (Channel) message.getHeaders().get(AmqpHeaders.CHANNEL);
         Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
         Event event = message.getPayload();
-        log.info("【监听事件】{}", JSON.toJSONString(event));
+        log.info("【监听事件-{}】{}", event.getType(), JSON.toJSONString(event));
         try {
             channel.basicAck(deliveryTag, false);
         } catch (IOException e) {

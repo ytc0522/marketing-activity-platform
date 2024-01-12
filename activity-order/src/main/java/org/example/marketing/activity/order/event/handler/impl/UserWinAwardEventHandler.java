@@ -3,6 +3,7 @@ package org.example.marketing.activity.order.event.handler.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson.JSON;
 import org.example.marketing.activity.order.event.handler.IEventHandler;
+import org.example.marketing.activity.order.mq.producer.EventProducer;
 import org.example.marketing.activity.order.repository.entity.UserActivityOrder;
 import org.example.marketing.activity.order.repository.mapper.UserActivityOrderMapper;
 import org.example.marketing.activity.order.utils.SnowFlakeUtil;
@@ -26,6 +27,9 @@ public class UserWinAwardEventHandler implements IEventHandler {
     @Resource
     private UserActivityOrderMapper orderMapper;
 
+    @Resource
+    private EventProducer eventProducer;
+
 
 
     @Override
@@ -45,8 +49,7 @@ public class UserWinAwardEventHandler implements IEventHandler {
         orderCreatedEvent.setBody(userActivityOrder.getOrderId());
         orderCreatedEvent.setType(Event.Type.ACTIVITY_ORDER_CREATED);
 
-
-
+        eventProducer.publishWithRecord(orderCreatedEvent);
 
     }
 

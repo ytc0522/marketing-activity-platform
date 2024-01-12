@@ -1,4 +1,4 @@
-package org.example.marketing.activity.consumer.mq.producer;
+package org.example.marketing.activity.order.mq.producer;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class EventProducer {
     private Source source;
 
     @Resource
-    private MqMsgSendFailRecordMapper recordService;
+    private MqMsgSendFailRecordMapper recordMapper;
 
     public boolean publish(Event event) {
         boolean published = false;
@@ -50,7 +50,7 @@ public class EventProducer {
             record.setState("0");
             record.setMsgContent(JSON.toJSONString(event));
             record.setSendTime(new Date());
-            if (!(recordService.insert(record) > 0)) {
+            if (!(recordMapper.insert(record) > 0)) {
                 // 如果走到了这里，消息没有发出去，又没有记录下来，这就相当于丢了，得记录下来。
                 log.error("mq msg send failed and record to db failed:{}", JSON.toJSONString(event));
             }
