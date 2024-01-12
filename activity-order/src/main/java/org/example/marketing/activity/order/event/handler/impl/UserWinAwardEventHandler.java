@@ -39,7 +39,7 @@ public class UserWinAwardEventHandler implements IEventHandler {
 
         UserActivityOrder userActivityOrder = BeanUtil.copyProperties(dto, UserActivityOrder.class);
         userActivityOrder.setOrderId(String.valueOf(snowFlakeUtil.snowflakeId()));
-        userActivityOrder.setOrderStatus("1");
+        userActivityOrder.setOrderStatus("0");
         userActivityOrder.setCreateTime(new Date());
         userActivityOrder.setUpdateTime(new Date());
         orderMapper.insert(userActivityOrder);

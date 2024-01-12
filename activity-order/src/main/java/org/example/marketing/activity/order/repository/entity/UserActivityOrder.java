@@ -31,7 +31,7 @@ public class UserActivityOrder implements Serializable {
     private String userId;
 
     /**
-     * 订单状态  0-未领奖 1-运输中 2-已领奖
+     * 订单状态
      */
     private String orderStatus;
 
