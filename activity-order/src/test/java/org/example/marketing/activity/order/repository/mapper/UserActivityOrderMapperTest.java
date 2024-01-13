@@ -2,6 +2,7 @@ package org.example.marketing.activity.order.repository.mapper;
 
 import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.example.marketing.activity.order.repository.entity.UserActivityOrder;
@@ -35,6 +36,11 @@ public class UserActivityOrderMapperTest {
 
         int insert = orderMapper.insert(order);
         System.out.println("insert = " + insert);
+
+        QueryWrapper<UserActivityOrder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("order_id", orderId);
+        UserActivityOrder userActivityOrder = orderMapper.selectOne(queryWrapper);
+        System.out.println("userActivityOrder = " + userActivityOrder);
     }
 
     /**
