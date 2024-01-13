@@ -1,6 +1,11 @@
 package org.example.marketing.activity.order.repository.mapper;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
 import org.junit.Test;
+
+import java.util.Date;
 
 public class Mytest {
 
@@ -17,6 +22,17 @@ public class Mytest {
         System.out.println("index = " + index);
 
     }
+
+
+    @Test
+    public void test_date() {
+        DateTime beginDate = DateUtil.parse("2015-01-01 00:00:00");
+
+        long ms = DateUtil.between(beginDate, new Date(), DateUnit.MS);
+
+        System.out.println("ms = " + ms);
+    }
+
 
     @Test
     public void test_tongyu() {

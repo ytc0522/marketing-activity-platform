@@ -31,17 +31,31 @@ public class UserWinAwardEventHandler implements IEventHandler {
     private EventProducer eventProducer;
 
 
-
     @Override
     public void handle(Event event) {
         String jsonString = JSON.toJSONString(event.getBody());
         UserWinAwardDto dto = JSON.parseObject(jsonString, UserWinAwardDto.class);
 
         UserActivityOrder userActivityOrder = BeanUtil.copyProperties(dto, UserActivityOrder.class);
-        userActivityOrder.setOrderId(String.valueOf(snowFlakeUtil.snowflakeId()));
+
+        Date currentDate = new Date();
+
+        // 订单号如何生成？ 订单ID = 下单时间时间戳 + 用户ID 后4位
+        StringBuilder orderIdStringBuilder = new StringBuilder(String.valueOf(currentDate.getTime()));
+
+        String userId = String.valueOf(dto.getUserId());
+        if (userId.length() >= 4) {
+            orderIdStringBuilder.append(userId, userId.length() - 4, -1);
+        } else {
+            for (int i = 0; i < 4 - userId.length(); i++) {
+                orderIdStringBuilder.append("0");
+            }
+            orderIdStringBuilder.append(userId);
+        }
+        userActivityOrder.setOrderId(orderIdStringBuilder.toString());
         userActivityOrder.setOrderStatus("0");
-        userActivityOrder.setCreateTime(new Date());
-        userActivityOrder.setUpdateTime(new Date());
+        userActivityOrder.setCreateTime(currentDate);
+        userActivityOrder.setUpdateTime(currentDate);
         orderMapper.insert(userActivityOrder);
 
         // 发布订单创建事件
