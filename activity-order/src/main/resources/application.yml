@@ -37,11 +37,13 @@ mybatis-plus:
 spring:
   application:
     name: activity-order
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: rootroot
-    url: jdbc:mysql://hadoop101:3306/marketing_activity
+  main:
+    allow-bean-definition-overriding: true
+  #  datasource:
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    username: root
+  #    password: rootroot
+  #    url: jdbc:mysql://hadoop101:3306/marketing_activity
 
 
   cloud:
@@ -70,14 +72,33 @@ spring:
           destination: ACTIVITY_EVENT_TOPIC
           group: ${spring.application.name}
 
+
   # sharding-jdbc
   shardingsphere:
     datasource:
-      names: activity00,activity01
-      activity00:
+      names: activity-order-00
+      activity-order-00:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/marketing_activity_01
+        jdbc-url: jdbc:mysql://hadoop101:3306/marketing_activity_00
+        username: root
+        password: rootroot
+    # 分片策略配置
+    sharding:
+      tables:
+        user_activity_order:
+          actual-data-nodes: activity-order-00.user_activity_order_$->{0..1}
+          table-strategy:
+            standard:
+              sharding-column: order_id
+              precise-algorithm-class-name: org.example.marketing.activity.order.repository.sharding.PreciseHashShardingConfig
+          database-strategy:
+            standard:
+              sharding-column: order_id
+              precise-algorithm-class-name: org.example.marketing.activity.order.repository.sharding.PreciseHashShardingConfig
+    props:
+      sql:
+        show: true
 
 
 

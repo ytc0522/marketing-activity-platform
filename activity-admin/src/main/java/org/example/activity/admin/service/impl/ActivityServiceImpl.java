@@ -28,6 +28,9 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
     public ActionResult prepare(Long activityId) {
         Activity activity = this.lambdaQuery().eq(Activity::getActivityId, activityId)
                 .one();
+        if (activity == null) {
+            return ActionResult.failure("活动不存在");
+        }
         // todo 这里需要判断活动类型，先不做了
         return lotteryDraw.prepare(activity.getStrategyId());
     }
