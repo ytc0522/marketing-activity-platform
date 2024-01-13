@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -33,6 +34,8 @@ public class UserActivityOrderMapperTest {
         order.setAwardId("99999");
         order.setAwardName("优惠券");
         order.setAwardContent("xkksjjgkolell");
+        order.setCreateTime(new Date());
+        order.setUpdateTime(new Date());
 
         int insert = orderMapper.insert(order);
         System.out.println("insert = " + insert);

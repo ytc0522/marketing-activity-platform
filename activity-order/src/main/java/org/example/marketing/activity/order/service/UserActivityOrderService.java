@@ -1,6 +1,8 @@
 package org.example.marketing.activity.order.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.marketing.activity.order.dto.req.ActivityOrderQueryReq;
 import org.example.marketing.activity.order.repository.entity.UserActivityOrder;
 
 /**
@@ -19,10 +21,8 @@ public interface UserActivityOrderService extends IService<UserActivityOrder> {
      */
     UserActivityOrder getByOrderId(String orderId);
 
-    // todo 分页查询
 
-
-    //
+    IPage<UserActivityOrder> queryPage(ActivityOrderQueryReq req);
 
 
 }

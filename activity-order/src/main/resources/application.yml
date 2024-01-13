@@ -112,7 +112,7 @@ spring:
     sharding:
       tables:
         user_activity_order:
-          actual-data-nodes: ds-order-${1..4}.user_activity_order_$->{0..1}
+          actual-data-nodes: ds-order-${1..4}.user_activity_order_$->{0..7}
           table-strategy:
             standard:
               sharding-column: order_id

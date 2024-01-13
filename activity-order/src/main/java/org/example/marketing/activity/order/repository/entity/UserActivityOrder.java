@@ -31,6 +31,11 @@ public class UserActivityOrder implements Serializable {
     private String userId;
 
     /**
+     * 商户ID
+     */
+    private String merchantId;
+
+    /**
      * 订单状态
      */
     private String orderStatus;
