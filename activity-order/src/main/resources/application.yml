@@ -29,6 +29,7 @@ mybatis-plus:
       insert-strategy: NOT_NULL
       update-strategy: NOT_NULL
   configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     cache-enabled: false
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
@@ -43,7 +44,7 @@ spring:
   #    driver-class-name: com.mysql.cj.jdbc.Driver
   #    username: root
   #    password: rootroot
-  #    url: jdbc:mysql://hadoop101:3306/marketing_activity
+  #    url: jdbc:mysql://hadoop101:3306/marketing_activity_00
 
 
   cloud:

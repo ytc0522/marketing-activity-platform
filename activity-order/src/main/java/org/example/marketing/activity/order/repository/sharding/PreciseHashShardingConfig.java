@@ -1,8 +1,8 @@
 package org.example.marketing.activity.order.repository.sharding;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
+import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 
