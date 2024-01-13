@@ -45,6 +45,12 @@ spring:
   #    username: root
   #    password: rootroot
   #    url: jdbc:mysql://hadoop101:3306/marketing_activity_00
+  redis:
+    database: 0
+    host: hadoop101     # Redis服务器地址，修改为你的地址
+    port: 6379          # Redis服务器连接端口
+    password:           # Redis服务器连接密码（默认为空）
+    timeout: 3000       # Redis服务器链接超时配置
 
 
   cloud:

@@ -6,6 +6,7 @@ import org.example.marketing.activity.order.event.handler.IEventHandler;
 import org.example.marketing.activity.order.mq.producer.EventProducer;
 import org.example.marketing.activity.order.repository.entity.UserActivityOrder;
 import org.example.marketing.activity.order.repository.mapper.UserActivityOrderMapper;
+import org.example.marketing.activity.order.utils.RedisUtil;
 import org.example.marketing.activity.order.utils.SnowFlakeUtil;
 import org.example.marketing.common.dto.UserWinAwardDto;
 import org.example.marketing.common.mq.Event;
@@ -28,6 +29,9 @@ public class UserWinAwardEventHandler implements IEventHandler {
     private UserActivityOrderMapper orderMapper;
 
     @Resource
+    private RedisUtil redisUtil;
+
+    @Resource
     private EventProducer eventProducer;
 
 
@@ -40,8 +44,12 @@ public class UserWinAwardEventHandler implements IEventHandler {
 
         Date currentDate = new Date();
 
-        // 订单号如何生成？ 订单ID = 下单时间时间戳 + 用户ID 后4位
+        // 订单号如何生成？ 订单ID = 下单时间时间戳 + redis自增生成数 +  用户ID 后4位
         StringBuilder orderIdStringBuilder = new StringBuilder(String.valueOf(currentDate.getTime()));
+
+        // 通过Redis生成一个自增唯一的数字
+        long incr = redisUtil.incr(currentDate.getTime() + ":" + dto.getUserId(), 1);
+        orderIdStringBuilder.append(incr);
 
         String userId = String.valueOf(dto.getUserId());
         if (userId.length() >= 4) {

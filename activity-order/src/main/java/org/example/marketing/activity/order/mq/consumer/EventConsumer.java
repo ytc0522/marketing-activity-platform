@@ -36,6 +36,7 @@ public class EventConsumer {
             eventProcess.process(event);
             channel.basicAck(deliveryTag, false);
         } catch (Exception e) {
+            log.error("【消费者异常信息】", e);
             try {
                 if (channel != null) {
                     channel.basicReject(deliveryTag, true); // 让消息变为ready状态,当requeue=false,会丢弃消息

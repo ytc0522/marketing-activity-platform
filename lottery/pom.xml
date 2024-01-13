@@ -8,7 +8,6 @@
         <module>lottery-rpc</module>
         <module>lottery-repository</module>
         <module>lottery-service</module>
-        <module>lottery-common</module>
     </modules>
     <parent>
         <groupId>org.example</groupId>
