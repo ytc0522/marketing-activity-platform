@@ -84,23 +84,28 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
             DrawReq drawReq = new DrawReq();
             drawReq.setUserId(req.getUserId());
             drawReq.setLotteryId(activity.getStrategyId());
+            // 假如奖品库存更新成功了，但是订单创建失败了，怎么处理？
+            // 这里 redis 和 数据库 无法保证事务一致性，在这里，无需保证强一致性，无非就是 redis扣减库存成功，
+            // 但是 数据库没有插入记录，我们已数据库记录为准。
             ActionResult<WinAward> lotteryResult = lotteryDraw.draw(drawReq);
             winAward = lotteryResult.getValue();
         }
 
-        // 更新领取活动记录表
-        record.setState("1");
-        userTakeActivityRecordService.updateById(record);
+        // 更新领取活动记录表 可以异步更新
+//        record.setState("1");
+//        userTakeActivityRecordService.updateById(record);
 
         // 增加用户参加的次数 更新用户活动次数表即可。
-        //
         if (winAward == null || StringUtils.isEmpty(winAward.getAwardId())) {
             // 未中奖
             return result;
         }
 
+        //
+
         // 中奖了 保存中奖订单
         // 同步还是异步保存？这里可以通过MQ异步保存订单，然后在订单服务中发送订单已经创建的通知。
+        // 假如库存已经更新了，但是没来得及发送消息服务就挂了，这个时候怎么办？
         publishWinAwardEvent(req.getUserId(), activity, winAward);
 
         return ActionResult.success(winAward);

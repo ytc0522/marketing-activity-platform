@@ -115,10 +115,11 @@ public abstract class RedisLotteryAwardPool implements ILotteryAwardPool,IAwardS
         try {
             String awardStockKey = AWARD_STOCK_KEY + lotteryId;
 
+            // todo 不知道Redis 扣减库存成功与否，需要优化。
             RedisScript<Long> redisScript = new DefaultRedisScript<>(GRAB_STOCK_SCRIPT, Long.class);
             cacheStock = redisUtil.stringRedisTemplate().execute(redisScript, Collections.singletonList(awardStockKey), awardId, "1");
 
-            // 将缓存中的库存数据同步给数据库
+            // 将缓存中的库存数据同步给数据库 todo 不能每次都刷新到数据库，应该在活动结束后，将缓存库存刷新到数据库。
             isSuccess = lotteryService.updateStockCount(lotteryId, awardId, cacheStock);
             // 如果缓存扣减成功，但是 数据库同步失败
             if (!isSuccess) {
