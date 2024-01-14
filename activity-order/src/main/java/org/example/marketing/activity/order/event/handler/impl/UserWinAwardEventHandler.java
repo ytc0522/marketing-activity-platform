@@ -45,23 +45,10 @@ public class UserWinAwardEventHandler implements IEventHandler {
         Date currentDate = new Date();
 
         // 订单号如何生成？ 订单ID = 下单时间时间戳 + redis自增生成数 +  用户ID 后4位
-        StringBuilder orderIdStringBuilder = new StringBuilder(String.valueOf(currentDate.getTime()));
 
-        // 通过Redis生成一个自增唯一的数字
-        long incr = redisUtil.incr(currentDate.getTime() + ":" + dto.getUserId(), 1);
-        orderIdStringBuilder.append(incr);
-
-        String userId = String.valueOf(dto.getUserId());
-        if (userId.length() >= 4) {
-            orderIdStringBuilder.append(userId, userId.length() - 4, -1);
-        } else {
-            for (int i = 0; i < 4 - userId.length(); i++) {
-                orderIdStringBuilder.append("0");
-            }
-            orderIdStringBuilder.append(userId);
-        }
-        userActivityOrder.setOrderId(orderIdStringBuilder.toString());
+        userActivityOrder.setOrderId(genOrderId(dto.getUserId(), currentDate));
         userActivityOrder.setOrderStatus("0");
+        userActivityOrder.setUuid(event.getEventId());
         userActivityOrder.setCreateTime(currentDate);
         userActivityOrder.setUpdateTime(currentDate);
         orderMapper.insert(userActivityOrder);
@@ -78,5 +65,32 @@ public class UserWinAwardEventHandler implements IEventHandler {
     @Override
     public Event.Type supportedEventType() {
         return Event.Type.USER_WIN_AWARD;
+    }
+
+
+    /**
+     * 生成OrderId
+     * 订单ID = 下单时间时间戳 + redis自增生成数 +  用户ID 后4位
+     *
+     * @param userId
+     * @param createDate
+     * @return
+     */
+    private String genOrderId(String userId, Date createDate) {
+        StringBuilder orderIdStringBuilder = new StringBuilder(String.valueOf(createDate.getTime()));
+
+        // 通过Redis生成一个自增唯一的数字
+        long incr = redisUtil.incr(createDate.getTime() + ":" + userId, 1);
+        orderIdStringBuilder.append(incr);
+
+        if (userId.length() >= 4) {
+            orderIdStringBuilder.append(userId, userId.length() - 4, -1);
+        } else {
+            for (int i = 0; i < 4 - userId.length(); i++) {
+                orderIdStringBuilder.append("0");
+            }
+            orderIdStringBuilder.append(userId);
+        }
+        return orderIdStringBuilder.toString();
     }
 }

@@ -36,6 +36,11 @@ public class UserActivityOrder implements Serializable {
     private String merchantId;
 
     /**
+     * uuid 用来防止创建重复订单
+     */
+    private String uuid;
+
+    /**
      * 订单状态
      */
     private String orderStatus;
