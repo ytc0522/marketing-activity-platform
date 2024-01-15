@@ -7,6 +7,26 @@
     <file url="file://$PROJECT_DIR$/activity-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-interfaces/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-interfaces/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-order/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-repository/src/main/java" charset="UTF-8" />
@@ -27,27 +47,26 @@
     <file url="file://$PROJECT_DIR$/activity-seckill/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dispatch-job/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dispatch-job/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-api/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-api/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-app/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-app/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-common/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-domain/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-domain/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-infrastructure/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-infrastructure/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-interfaces/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-interfaces/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-repository/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-repository/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-rpc/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-rpc/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/lottery-service/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lottery/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/activity-repository/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-activity/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/lottery-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/marketing-lottery/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/red-packet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/red-packet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

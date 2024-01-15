@@ -124,10 +124,17 @@
         <option value="$PROJECT_DIR$/lottery/lottery-rpc/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-common/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-repository/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-common/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-repository/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-order/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/activity-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-order/pom.xml" />
         <option value="$PROJECT_DIR$/dispatch-job/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-api/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-app/pom.xml" />
@@ -135,7 +142,7 @@
         <option value="$PROJECT_DIR$/lottery/lottery-domain/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-interfaces/pom.xml" />
-        <option value="$PROJECT_DIR$/marketing-activity/pom.xml" />
+        <option value="$PROJECT_DIR$/red-packet/pom.xml" />
       </set>
     </option>
   </component>

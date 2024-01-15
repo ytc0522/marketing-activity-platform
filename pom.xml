@@ -9,13 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>lottery</module>
-        <module>red-packet</module>
-        <module>activity-common</module>
-        <module>activity-admin</module>
-        <module>activity-consumer</module>
-        <module>activity-repository</module>
-        <module>activity-order</module>
+        <module>marketing-activity</module>
+        <module>activity-lottery</module>
         <module>activity-seckill</module>
     </modules>
 
