@@ -16,6 +16,7 @@
         <module>activity-consumer</module>
         <module>activity-repository</module>
         <module>activity-order</module>
+        <module>activity-seckill</module>
     </modules>
 
     <properties>
