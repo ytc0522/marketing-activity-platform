@@ -23,7 +23,6 @@
         <module>activity-consumer</module>
         <module>activity-common</module>
         <module>activity-repository</module>
-        <module>activity-order</module>
     </modules>
 
 </project>

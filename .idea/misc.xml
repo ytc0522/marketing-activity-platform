@@ -129,6 +129,7 @@
         <option value="$PROJECT_DIR$/marketing-activity/activity-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-activity/activity-repository/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-activity/activity-order/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/lottery-order/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -142,6 +143,7 @@
         <option value="$PROJECT_DIR$/lottery/lottery-domain/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-interfaces/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-activity/activity-order/pom.xml" />
         <option value="$PROJECT_DIR$/red-packet/pom.xml" />
       </set>
     </option>

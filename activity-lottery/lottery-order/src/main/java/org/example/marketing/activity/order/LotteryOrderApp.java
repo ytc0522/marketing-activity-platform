@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @MapperScan({"org.example.marketing.activity.order.repository.mapper", "org.example.activity.repository.mapper"})
 @SpringBootApplication
-public class ActivityOrderApp {
+public class LotteryOrderApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(ActivityOrderApp.class);
+        SpringApplication.run(LotteryOrderApp.class);
     }
 
 
