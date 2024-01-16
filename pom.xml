@@ -13,6 +13,7 @@
         <module>activity-lottery</module>
         <module>activity-seckill</module>
         <module>activity-lottery/lottery-admin-api</module>
+        <module>activity-pintuan</module>
     </modules>
 
     <properties>
