@@ -2,6 +2,9 @@ package org.example.marketing.activity.consumer.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import marketing.lottery.rpc.ILotteryRpcService;
+import marketing.lottery.rpc.dto.WinAward;
+import marketing.lottery.rpc.req.LotteryDrawReq;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.activity.repository.entity.Activity;
@@ -16,9 +19,6 @@ import org.example.marketing.common.dto.UserWinAwardDto;
 import org.example.marketing.common.enums.ActivityType;
 import org.example.marketing.common.mq.Event;
 import org.example.marketing.common.req.activity.TakeActivityReq;
-import org.example.marketing.lottery.rpc.ILotteryRpcService;
-import org.example.marketing.lottery.rpc.dto.WinAward;
-import org.example.marketing.lottery.rpc.req.LotteryDrawReq;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

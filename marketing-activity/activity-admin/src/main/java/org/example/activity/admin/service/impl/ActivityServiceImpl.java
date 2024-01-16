@@ -2,12 +2,12 @@ package org.example.activity.admin.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import marketing.lottery.rpc.ILotteryRpcService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.activity.admin.service.ActivityService;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.mapper.ActivityMapper;
 import org.example.marketing.common.ActionResult;
-import org.example.marketing.lottery.rpc.ILotteryRpcService;
 import org.springframework.stereotype.Service;
 
 /**

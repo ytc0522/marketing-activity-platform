@@ -10,7 +10,8 @@
         <module>lottery-service</module>
         <module>lottery-order-service</module>
         <module>lottery-order-rpc</module>
-        <module>lottery-api</module>
+        <module>lottery-consumer-api</module>
+        <module>lottery-merchant-api</module>
     </modules>
     <parent>
         <groupId>org.example</groupId>
