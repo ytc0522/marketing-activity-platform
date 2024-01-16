@@ -62,4 +62,13 @@ public abstract class RedisLotteryAwardPool implements ILotteryAwardPool {
         }
     }
 
+    @Override
+    public void removeAward(Long activityId, String awardId) {
+        redisUtil.hdel(lotteryPoolCacheKey(activityId), awardId);
+    }
+
+
+    private String lotteryPoolCacheKey(Long activityId) {
+        return LOTTERY_POOL_KEY + activityId;
+    }
 }

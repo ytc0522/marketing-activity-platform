@@ -21,5 +21,10 @@ public interface ILotteryAwardPool {
      */
     String doDraw(Long lotteryId);
 
+    /**
+     * 从抽奖奖品池中移除一个奖品
+     */
+    void removeAward(Long lotteryId, String awardId);
+
 
 }

@@ -77,7 +77,9 @@ public class LotteryActivityRpcServiceImpl implements ILotteryRpcService {
         boolean success = stockStorage.deductStock(activityId, awardId);
 
         if (!success) {
-            // 扣减库存失败,表示未中奖
+            // 扣减库存失败,表示未中奖,同时也表明该奖品库存没了
+            // 如果是 动态概率，要将奖品从奖品池中删除
+            lotteryAwardPool.removeAward(activityId, awardId);
             return null;
         }
 
