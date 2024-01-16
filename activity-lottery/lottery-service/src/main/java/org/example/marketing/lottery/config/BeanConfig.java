@@ -1,7 +1,7 @@
 package org.example.marketing.lottery.config;
 
-import org.example.marketing.lottery.domain.pool.DynamicChanceLotteryAwardPool;
-import org.example.marketing.lottery.domain.pool.FixChanceLotteryAwardPool;
+import org.example.marketing.lottery.domain.pool.DynamicChanceLotteryLotteryAwardPool;
+import org.example.marketing.lottery.domain.pool.FixChanceLotteryLotteryAwardPool;
 import org.example.marketing.lottery.domain.pool.ILotteryAwardPool;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +14,10 @@ import java.util.Map;
 public class BeanConfig {
 
     @Resource
-    private FixChanceLotteryAwardPool fixChanceLotteryAwardPool;
+    private FixChanceLotteryLotteryAwardPool fixChanceLotteryAwardPool;
 
     @Resource
-    private DynamicChanceLotteryAwardPool dynamicChanceLotteryAwardPool;
+    private DynamicChanceLotteryLotteryAwardPool dynamicChanceLotteryAwardPool;
 
 
     @Bean

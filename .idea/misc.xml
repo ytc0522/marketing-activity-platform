@@ -130,12 +130,22 @@
         <option value="$PROJECT_DIR$/marketing-activity/activity-repository/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-activity/activity-order/pom.xml" />
         <option value="$PROJECT_DIR$/activity-lottery/lottery-order/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/lottery-order-rpc/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/lottery-rpc/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/lottery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/activity-admin/pom.xml" />
         <option value="$PROJECT_DIR$/activity-order/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-application/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-interfaces/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-nginx/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-seckill/seckill-starter/pom.xml" />
         <option value="$PROJECT_DIR$/dispatch-job/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-api/pom.xml" />
         <option value="$PROJECT_DIR$/lottery/lottery-app/pom.xml" />

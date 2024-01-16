@@ -8,8 +8,9 @@
         <module>lottery-rpc</module>
         <module>lottery-repository</module>
         <module>lottery-service</module>
-        <module>lottery-order</module>
+        <module>lottery-order-service</module>
         <module>lottery-order-rpc</module>
+        <module>lottery-api</module>
     </modules>
     <parent>
         <groupId>org.example</groupId>

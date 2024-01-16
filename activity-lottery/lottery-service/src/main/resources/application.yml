@@ -2,11 +2,13 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: lottery-activity
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: rootroot
-    url: jdbc:mysql://hadoop101:3306/marketing_activity
+    url: jdbc:mysql://hadoop101:3306/marketing_activity_lottery
   redis:
     database: 0
     host: hadoop101     # Redis服务器地址，修改为你的地址
@@ -22,7 +24,7 @@ nacos:
 # Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
 dubbo:
   application:
-    name: Lottery
+    name: lottery-activity
     version: 1.0.0
   #    parameters:
   #      unicast: false

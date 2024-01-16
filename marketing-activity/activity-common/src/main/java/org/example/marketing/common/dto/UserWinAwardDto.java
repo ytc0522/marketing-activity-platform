@@ -29,10 +29,6 @@ public class UserWinAwardDto implements Serializable {
      */
     private String activityType;
 
-    /**
-     * 活动策略ID
-     */
-    private Long strategyId;
 
     /**
      * 奖品ID

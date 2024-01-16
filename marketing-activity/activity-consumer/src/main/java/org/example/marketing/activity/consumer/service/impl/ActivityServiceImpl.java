@@ -16,9 +16,9 @@ import org.example.marketing.common.dto.UserWinAwardDto;
 import org.example.marketing.common.enums.ActivityType;
 import org.example.marketing.common.mq.Event;
 import org.example.marketing.common.req.activity.TakeActivityReq;
-import org.example.marketing.lottery.rpc.ILotteryDraw;
+import org.example.marketing.lottery.rpc.ILotteryRpcService;
 import org.example.marketing.lottery.rpc.dto.WinAward;
-import org.example.marketing.lottery.rpc.req.DrawReq;
+import org.example.marketing.lottery.rpc.req.LotteryDrawReq;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,7 +36,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         implements ActivityService {
 
     @DubboReference
-    private ILotteryDraw lotteryDraw;
+    private ILotteryRpcService lotteryDraw;
 
     @Resource
     private AwardService awardService;
@@ -81,13 +81,13 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         WinAward winAward = null;
         String activityType = activity.getActivityType();
         if (ActivityType.LOTTERY.toString().equals(activityType)) {
-            DrawReq drawReq = new DrawReq();
-            drawReq.setUserId(req.getUserId());
-            drawReq.setLotteryId(activity.getStrategyId());
+            LotteryDrawReq lotteryDrawReq = new LotteryDrawReq();
+            lotteryDrawReq.setUserId(req.getUserId());
+            lotteryDrawReq.setActivityId(activity.getActivityId());
             // 假如奖品库存更新成功了，但是订单创建失败了，怎么处理？
             // 这里 redis 和 数据库 无法保证事务一致性，在这里，无需保证强一致性，无非就是 redis扣减库存成功，
             // 但是 数据库没有插入记录，我们已数据库记录为准。
-            winAward = lotteryDraw.draw(drawReq);
+            //winAward = lotteryDraw.draw(lotteryDrawReq);
         }
 
         // 更新领取活动记录表 可以异步更新
@@ -114,13 +114,11 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
         UserWinAwardDto dto = new UserWinAwardDto();
         dto.setAwardId(winAward.getAwardId());
         dto.setAwardName(winAward.getAwardName());
-        dto.setAwardContent(winAward.getAwardContent());
-        dto.setAwardType(winAward.getAwardType());
+
 
         dto.setActivityId(activity.getActivityId());
         dto.setActivityName(activity.getActivityName());
         dto.setActivityType(activity.getActivityType());
-        dto.setStrategyId(activity.getStrategyId());
         dto.setUserId(userId);
 
         publishWinAwardEvent(dto);

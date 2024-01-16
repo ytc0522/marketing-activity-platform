@@ -12,7 +12,6 @@
         <module>marketing-activity</module>
         <module>activity-lottery</module>
         <module>activity-seckill</module>
-        <module>activity-lottery/lottery-order-rpc</module>
     </modules>
 
     <properties>

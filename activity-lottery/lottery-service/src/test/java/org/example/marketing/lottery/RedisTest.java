@@ -1,7 +1,7 @@
 package org.example.marketing.lottery;
 
 
-import org.example.marketing.lottery.repository.entity.Lottery;
+import org.example.marketing.lottery.repository.entity.LotteryActivity;
 import org.example.marketing.lottery.repository.util.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,16 +21,16 @@ public class RedisTest {
 
     @Test
     public void test_list() {
-        Lottery lottery = new Lottery();
-        lottery.setId(100L);
-        lottery.setChanceType(1);
-        lottery.setCreateTime(new Date());
+        LotteryActivity lotteryActivity = new LotteryActivity();
+        lotteryActivity.setId(100L);
+        lotteryActivity.setProbabilityType(1);
+        lotteryActivity.setCreateTime(new Date());
 
-        boolean testKey = redisUtil.set("testKey", lottery);
+        boolean testKey = redisUtil.set("testKey", lotteryActivity);
 
-        Lottery lottery1 = (Lottery)redisUtil.get("testKey");
+        LotteryActivity lotteryActivity1 = (LotteryActivity) redisUtil.get("testKey");
 
-        System.out.println("lottery1 = " + lottery1);
+        System.out.println("lottery1 = " + lotteryActivity1);
 
 
     }

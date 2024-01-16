@@ -12,12 +12,11 @@
     <artifactId>activity-seckill</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>seckill-interfaces</module>
-        <module>seckill-application</module>
-        <module>seckill-domain</module>
-        <module>seckill-nginx</module>
-        <module>seckill-infrastructure</module>
-        <module>seckill-starter</module>
+        <module>seckill-repository</module>
+        <module>seckill-service</module>
+        <module>seckill-rpc</module>
+        <module>seckill-order-service</module>
+        <module>seckill-order-rpc</module>
     </modules>
 
     <properties>

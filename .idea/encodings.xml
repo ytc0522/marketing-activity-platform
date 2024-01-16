@@ -21,8 +21,8 @@
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-interfaces/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order-rpc/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order-rpc/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-order-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-repository/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-repository/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-rpc/src/main/java" charset="UTF-8" />
@@ -45,6 +45,16 @@
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-interfaces/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-nginx/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-nginx/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-order-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-order-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-order-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/src/main/java" charset="UTF-8" />

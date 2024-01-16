@@ -7,7 +7,7 @@ import org.example.activity.admin.service.ActivityService;
 import org.example.activity.repository.entity.Activity;
 import org.example.activity.repository.mapper.ActivityMapper;
 import org.example.marketing.common.ActionResult;
-import org.example.marketing.lottery.rpc.ILotteryDraw;
+import org.example.marketing.lottery.rpc.ILotteryRpcService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,7 +21,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity>
 
 
     @DubboReference
-    private ILotteryDraw lotteryDraw;
+    private ILotteryRpcService lotteryDraw;
 
 
     @Override
