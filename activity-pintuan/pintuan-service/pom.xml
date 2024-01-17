@@ -5,22 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.example</groupId>
-        <artifactId>marketing-activity-platform</artifactId>
+        <artifactId>activity-pintuan</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>activity-seckill</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>seckill-repository</module>
-        <module>seckill-service</module>
-        <module>seckill-rpc</module>
-        <module>seckill-order-service</module>
-        <module>seckill-order-rpc</module>
-        <module>seckill-admin-api</module>
-        <module>seckill-consumer-api</module>
-        <module>seckill-merchant-api</module>
-    </modules>
+    <artifactId>pintuan-service</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

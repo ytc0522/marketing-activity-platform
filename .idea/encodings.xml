@@ -37,16 +37,40 @@
     <file url="file://$PROJECT_DIR$/activity-lottery/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-admin-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-admin-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-consumer-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-consumer-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-merchant-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-merchant-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-order-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-order-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-order-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/pintuan-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-pintuan/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-repository/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-repository/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-admin-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-admin-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-consumer-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-consumer-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-infrastructure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-interfaces/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-interfaces/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-merchant-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-seckill/seckill-merchant-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-nginx/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-nginx/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-seckill/seckill-order-rpc/src/main/java" charset="UTF-8" />
