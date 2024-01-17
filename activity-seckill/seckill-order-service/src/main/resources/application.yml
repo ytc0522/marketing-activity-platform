@@ -1,5 +1,5 @@
 server:
-  port: 8100
+  port: 8200
 
 
 # 设置nacos的地址（配置中心）
@@ -44,7 +44,7 @@ spring:
   #    driver-class-name: com.mysql.cj.jdbc.Driver
   #    username: root
   #    password: rootroot
-  #    url: jdbc:mysql://hadoop101:3306/marketing_activity_00
+  #    url: jdbc:mysql://hadoop101:3306/activity_order_seckill_1
   redis:
     database: 0
     host: hadoop101     # Redis服务器地址，修改为你的地址
@@ -112,15 +112,15 @@ spring:
     sharding:
       tables:
         seckill_order:
-          actual-data-nodes: ds-order-${1..4}.seckill_order_0_$->{0..7}
+          actual-data-nodes: ds-order-${1..4}.seckill_order_$->{0..7}
           table-strategy:
             standard:
-              sharding-column: order_id
-              precise-algorithm-class-name: org.example.marketing.activity.order.repository.sharding.PreciseHashShardingConfig
+              sharding-column: user_id
+              precise-algorithm-class-name: marketing.activity.seckill.order.sharding.PreciseHashShardingConfig
           database-strategy:
             standard:
-              sharding-column: order_id
-              precise-algorithm-class-name: org.example.marketing.activity.order.repository.sharding.PreciseHashShardingConfig
+              sharding-column: user_id
+              precise-algorithm-class-name: marketing.activity.seckill.order.sharding.PreciseHashShardingConfig
     props:
       sql:
         show: true

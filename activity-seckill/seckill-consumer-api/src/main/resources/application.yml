@@ -1,5 +1,5 @@
 server:
-  port: 8200
+  port: 8210
 
 
 # 设置nacos的地址（配置中心）
@@ -10,7 +10,7 @@ nacos:
 # Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
 dubbo:
   application:
-    name: seckill-service
+    name: activity-seckill-consumer-api
     version: 1.0.0
   registry:
     address: nacos://hadoop101:8848
@@ -29,7 +29,6 @@ mybatis-plus:
       insert-strategy: NOT_NULL
       update-strategy: NOT_NULL
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     cache-enabled: false
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
@@ -37,21 +36,7 @@ mybatis-plus:
 
 spring:
   application:
-    name: seckill-service
-  main:
-    allow-bean-definition-overriding: true
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: rootroot
-    url: jdbc:mysql://hadoop101:3306/marketing_activity_seckill
-  redis:
-    database: 0
-    host: hadoop101     # Redis服务器地址，修改为你的地址
-    port: 6379          # Redis服务器连接端口
-    password:           # Redis服务器连接密码（默认为空）
-    timeout: 3000       # Redis服务器链接超时配置
-
+    name: activity-seckill-consumer-api
 
   cloud:
     stream:
@@ -78,3 +63,19 @@ spring:
         output:
           destination: ACTIVITY_EVENT_TOPIC
           group: ${spring.application.name}
+
+xxl:
+  job:
+    admin:
+      addresses: http://hadoop101:8800/xxl-job-admin
+    executor:
+      appname: ${spring.application.name}
+      address:
+      ip:
+      port: 9999
+      logpath: /Users/jack/Development/data/logs/xxl-job/
+      logretentiondays: 30
+    accessToken: onelovehzs888
+
+
+
