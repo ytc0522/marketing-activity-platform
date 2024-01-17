@@ -18,7 +18,10 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>seckill-rpc</artifactId>

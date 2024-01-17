@@ -1,13 +1,15 @@
 package marketing.activity.seckill.order.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 
+@Builder
 @Data
-public class SeckillOrderCreateReq implements Serializable {
+public class SeckillOrderQueryReq implements Serializable {
 
-    private static final long serialVersionUID = -8140675158190637140L;
+    private static final long serialVersionUID = 5319488215135309033L;
 
     private String userId;
 
@@ -16,4 +18,6 @@ public class SeckillOrderCreateReq implements Serializable {
     private Long goodsId;
 
     private String orderId;
+
+
 }
