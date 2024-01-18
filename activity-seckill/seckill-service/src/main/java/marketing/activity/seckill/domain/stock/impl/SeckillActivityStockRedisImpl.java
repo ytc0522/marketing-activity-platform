@@ -99,7 +99,8 @@ public class SeckillActivityStockRedisImpl implements ISeckillActivityStock {
      */
     @Override
     public boolean rollBack(Long activityId, String goodsId) {
-        return false;
+        redisUtil.hincr(stockCacheKey(activityId), goodsId, 1L);
+        return true;
     }
 
     /**

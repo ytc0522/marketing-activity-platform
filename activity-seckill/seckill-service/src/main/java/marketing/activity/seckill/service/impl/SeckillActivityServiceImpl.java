@@ -1,5 +1,6 @@
 package marketing.activity.seckill.service.impl;
 
+import cn.hutool.core.lang.Snowflake;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import marketing.activity.seckill.domain.order.ISeckillOrderFacade;
@@ -26,9 +27,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author jack
@@ -57,6 +56,8 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
     @Resource
     private SeckillGoodsService goodsService;
 
+    @Resource
+    private Snowflake snowflake = new Snowflake();
 
     @Resource
     private EventProducer eventProducer;
@@ -89,7 +90,7 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
                     .activityId(activityId)
                     .goodsId(req.getGoodsId())
                     .build();
-            List<SeckillOrderDto> list = seckillOrderFacade.queryFromDB(queryReq);
+            List<SeckillOrderDto> list = seckillOrderFacade.queryOrders(queryReq);
             if (CollectionUtils.isNotEmpty(list)) {
                 return ActionResult.failure("每人最多一件！");
             }
@@ -106,7 +107,7 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
             createReq.setActivityId(activityId);
             createReq.setUserId(req.getUserId());
             createReq.setGoodsId(req.getGoodsId());
-            orderId = seckillOrderFacade.createSeckillOrder(createReq);
+            seckillOrderFacade.createSeckillOrder(createReq);
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -132,23 +133,29 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
 
         // 根据活动ID找到秒杀商品
         Long activityId = req.getActivityId();
+        String goodsId = req.getGoodsId();
         // 省略校验活动时间的代码
         // 从缓存中查找
-        SeckillGoods seckillGoods = goodsService.querySeckillGoods(activityId, req.getGoodsId());
+        SeckillGoods seckillGoods = goodsService.querySeckillGoods(activityId, goodsId);
         if (seckillGoods == null) {
             return ActionResult.failure("活动无该商品");
         }
+        // 判断是否是重复抢购 从缓存中判断就行 省略
+        List<SeckillOrderDto> orderDtos = seckillOrderFacade.queryOrders(SeckillOrderQueryReq.builder().activityId(activityId).userId(req.getUserId()).goodsId(goodsId).build());
+        if (CollectionUtils.isNotEmpty(orderDtos)) {
+            return ActionResult.failure("不能重复抢购！");
+        }
+
         // redis 中扣减库存
-        boolean success = seckillActivityRedisStock.deductStock(activityId, req.getGoodsId());
+        boolean success = seckillActivityRedisStock.deductStock(activityId, goodsId);
         if (!success) {
             return ActionResult.failure("差一点点就抢购成功了～");
         }
+        // 查询现在的库存
+        Integer stock = seckillActivityRedisStock.queryStock(activityId, goodsId);
 
-        Integer availableStock = seckillActivityRedisStock.queryStock(activityId, req.getGoodsId());
-
-        // 发送消息，目的是为了将redis中库存同步给数据库中
-        publishSeckillWinGoodsMsq(req, availableStock);
-
+        // 发送MQ消息
+        publishSeckillWinGoodsMsq(req, stock);
         return ActionResult.success();
     }
 
@@ -171,17 +178,6 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
         eventProducer.publish(event);
     }
 
-    /**
-     * 根据token查询用户秒杀订单是否已经创建
-     *
-     * @param token
-     * @return
-     */
-    @Override
-    public ActionResult querySeckillOrderByToken(String token) {
-
-        return null;
-    }
 
     /**
      * @param req
@@ -202,16 +198,6 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
         }
         return ActionResult.failure("没有抢到商品～～");
     }
-
-
-    private String createToken(Long activityId, String userId, String goodsId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("activityId", activityId);
-        map.put("goodsId", goodsId);
-        map.put("userId", userId);
-        return JwtUtil.createToken(map);
-    }
-
 
 }
 

@@ -22,25 +22,23 @@ public class DefaultSeckillOrderFacade implements ISeckillOrderFacade {
     private RedisUtil redisUtil;
 
     /**
+     *
+     *
      * @param queryReq
      * @return
      */
     @Override
-    public List<SeckillOrderDto> queryFromDB(SeckillOrderQueryReq queryReq) {
+    public List<SeckillOrderDto> queryOrders(SeckillOrderQueryReq queryReq) {
         return orderRpcService.query(queryReq);
     }
 
-
-    private String tokenCacheKey(Long activityId, String userId, String goodsId) {
-        return "Seckill:Token:" + activityId + ":" + userId + ":" + goodsId;
-    }
 
     /**
      * @param createReq
      * @return
      */
     @Override
-    public String createSeckillOrder(SeckillOrderCreateReq createReq) {
+    public boolean createSeckillOrder(SeckillOrderCreateReq createReq) {
         return orderRpcService.createSeckillOrder(createReq);
     }
 }

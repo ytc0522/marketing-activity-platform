@@ -22,16 +22,8 @@ public class Event<T> {
     public enum Type {
 
         /**
-         * 活动订单已创建
+         * 用户抢到了商品
          */
-        ACTIVITY_ORDER_CREATED,
-
-        /**
-         * 用户中奖
-         */
-        USER_WIN_AWARD,
-
-
         SECKILL_USER_WIN_GOODS
 
     }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface ISeckillOrderRpcService {
 
 
-    String createSeckillOrder(SeckillOrderCreateReq req);
+    boolean createSeckillOrder(SeckillOrderCreateReq req);
 
     List<SeckillOrderDto> query(SeckillOrderQueryReq req);
 

@@ -12,14 +12,13 @@ import java.util.List;
 public interface ISeckillOrderFacade {
 
     /**
-     * 从数据库中查询订单
+     * 查询订单
      *
      * @param queryReq
      * @return
      */
-    List<SeckillOrderDto> queryFromDB(SeckillOrderQueryReq queryReq);
+    List<SeckillOrderDto> queryOrders(SeckillOrderQueryReq queryReq);
 
-
-    String createSeckillOrder(SeckillOrderCreateReq createReq);
+    boolean createSeckillOrder(SeckillOrderCreateReq createReq);
 
 }

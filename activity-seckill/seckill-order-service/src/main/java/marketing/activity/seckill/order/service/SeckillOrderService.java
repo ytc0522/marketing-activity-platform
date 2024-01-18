@@ -1,6 +1,7 @@
 package marketing.activity.seckill.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import marketing.activity.seckill.order.dto.SeckillOrderCreateReq;
 import marketing.activity.seckill.order.repository.entity.SeckillOrder;
 
 /**
@@ -9,5 +10,8 @@ import marketing.activity.seckill.order.repository.entity.SeckillOrder;
  * @createDate 2024-01-17 16:07:05
  */
 public interface SeckillOrderService extends IService<SeckillOrder> {
+
+
+    boolean createSeckillOrder(SeckillOrderCreateReq req);
 
 }

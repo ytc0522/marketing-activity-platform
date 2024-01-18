@@ -33,6 +33,7 @@ public class SeckillUserWinGoodsEventHandler implements IEventHandler<SeckillWin
         boolean update = goodsService.lambdaUpdate().set(SeckillGoods::getAvailableCount, availableStock)
                 .eq(SeckillGoods::getActivityId, goods.getActivityId())
                 .eq(SeckillGoods::getGoodsId, goods.getGoodsId())
+                .eq(SeckillGoods::getAvailableCount, availableStock + 1)
                 .update();
 
         log.info("同步库存:{}", update);
