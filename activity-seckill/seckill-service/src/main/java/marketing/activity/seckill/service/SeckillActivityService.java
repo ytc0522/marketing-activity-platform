@@ -1,6 +1,8 @@
 package marketing.activity.seckill.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import marketing.activity.seckill.dto.ActionResult;
+import marketing.activity.seckill.dto.SeckillReq;
 import marketing.activity.seckill.repository.entity.SeckillActivity;
 
 /**
@@ -10,4 +12,20 @@ import marketing.activity.seckill.repository.entity.SeckillActivity;
  */
 public interface SeckillActivityService extends IService<SeckillActivity> {
 
+
+    public ActionResult seckillSync(SeckillReq req);
+
+    void preHeat();
+
+    ActionResult seckillAsync(SeckillReq req);
+
+    /**
+     * 根据token查询用户秒杀订单是否已经创建
+     *
+     * @param token
+     * @return
+     */
+    ActionResult querySeckillOrderByToken(String token);
+
+    ActionResult seckillResult(SeckillReq req, String token);
 }

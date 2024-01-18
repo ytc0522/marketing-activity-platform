@@ -45,7 +45,16 @@ spring:
     username: root
     password: rootroot
     url: jdbc:mysql://hadoop101:3306/marketing_activity_seckill
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 5000 # 连接超时时间 ms
+      connection-test-query: SELECT 1
   redis:
+    lettuce:
+      pool:
+        max-active: 10
+        min-idle: 1
+        max-idle: 8
     database: 0
     host: hadoop101     # Redis服务器地址，修改为你的地址
     port: 6379          # Redis服务器连接端口

@@ -4,12 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import marketing.activity.seckill.ISeckillRpcService;
 import marketing.activity.seckill.dto.ActionResult;
 import marketing.activity.seckill.dto.SeckillReq;
-import marketing.activity.seckill.dto.SeckillResult;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -29,8 +25,13 @@ public class SeckillConsumerController {
      */
     @PostMapping("/seckill")
     public ActionResult seckillAsync(@RequestBody SeckillReq req) {
-        SeckillResult seckillResult = seckillRpcService.doSeckill(req);
-        return ActionResult.success(seckillResult);
+        return ActionResult.success(seckillRpcService.seckillAsync(req));
+    }
+
+    @PostMapping("/result")
+    public ActionResult seckillResult(@RequestBody SeckillReq req,
+                                      @RequestParam("token") String token) {
+        return ActionResult.success(seckillRpcService.seckillResult(req, token));
     }
 
 

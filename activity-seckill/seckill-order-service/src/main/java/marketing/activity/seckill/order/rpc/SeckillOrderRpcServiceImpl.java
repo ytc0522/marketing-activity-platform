@@ -40,7 +40,7 @@ public class SeckillOrderRpcServiceImpl implements ISeckillOrderRpcService {
         }
         // 商户ID 这里模拟一些商户
         seckillOrder.setMerchantId(snowflake.nextId());
-        seckillOrder.setGoodsId(req.getGoodsId());
+        seckillOrder.setGoodsId(Long.parseLong(req.getGoodsId()));
         seckillOrder.setGoodsName("商品ID：" + req.getGoodsId());
         seckillOrder.setUserId(req.getUserId());
 

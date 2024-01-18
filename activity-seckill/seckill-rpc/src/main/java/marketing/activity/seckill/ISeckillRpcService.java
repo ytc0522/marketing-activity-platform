@@ -2,7 +2,6 @@ package marketing.activity.seckill;
 
 import marketing.activity.seckill.dto.ActionResult;
 import marketing.activity.seckill.dto.SeckillReq;
-import marketing.activity.seckill.dto.SeckillResult;
 
 public interface ISeckillRpcService {
 
@@ -20,7 +19,7 @@ public interface ISeckillRpcService {
      * @param req
      * @return
      */
-    SeckillResult doSeckill(SeckillReq req);
+    ActionResult seckillAsync(SeckillReq req);
 
 
     /**
@@ -30,4 +29,12 @@ public interface ISeckillRpcService {
      */
     ActionResult seckillSync(SeckillReq seckillReq);
 
+    /**
+     * 获取秒杀结果
+     *
+     * @param req
+     * @param token
+     * @return
+     */
+    ActionResult seckillResult(SeckillReq req, String token);
 }

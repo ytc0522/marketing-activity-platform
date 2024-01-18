@@ -13,7 +13,7 @@ public class SeckillOrderCreateReq implements Serializable {
 
     private Long activityId;
 
-    private Long goodsId;
+    private String goodsId;
 
     private String orderId;
 }
