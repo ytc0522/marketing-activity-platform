@@ -6,8 +6,8 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.log.XxlJobLogger;
 import lombok.extern.slf4j.Slf4j;
 import marketing.activity.infrastructure.event.Event;
+import marketing.activity.infrastructure.mq.producer.EventProducer;
 import marketing.activity.infrastructure.repository.entity.MqMsgSendFailRecord;
-import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.MqMsgSendFailRecordService;
 import org.springframework.stereotype.Component;
 
