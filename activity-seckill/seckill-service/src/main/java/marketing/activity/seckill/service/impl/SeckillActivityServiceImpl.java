@@ -103,7 +103,7 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
             }
 
             // 写订单
-            SeckillOrderCreateReq createReq = new SeckillOrderCreateReq();
+            SeckillOrderCreateReq createReq = SeckillOrderCreateReq.builder().build();
             createReq.setActivityId(activityId);
             createReq.setUserId(req.getUserId());
             createReq.setGoodsId(req.getGoodsId());
