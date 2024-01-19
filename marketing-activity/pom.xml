@@ -23,6 +23,7 @@
         <module>activity-consumer</module>
         <module>activity-common</module>
         <module>activity-infrastructure</module>
+        <module>activity-gateway</module>
     </modules>
 
 </project>
