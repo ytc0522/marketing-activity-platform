@@ -12,6 +12,7 @@
         <module>lottery-order-rpc</module>
         <module>lottery-consumer-api</module>
         <module>lottery-merchant-api</module>
+        <module>lottery-admin-api</module>
     </modules>
     <parent>
         <groupId>org.example</groupId>
