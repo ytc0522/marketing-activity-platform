@@ -21,6 +21,8 @@ public class Event<T> {
 
     public enum Type {
 
+        ACTIVITY_ORDER_CREATED,
+        USER_WIN_AWARD,
         /**
          * 用户抢到了商品
          */

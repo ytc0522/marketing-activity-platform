@@ -1,8 +1,8 @@
 package marketing.activity.order.event.handler.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import marketing.activity.order.event.handler.IEventHandler;
-import org.example.marketing.common.mq.Event;
+import marketing.activity.infrastructure.event.Event;
+import marketing.activity.infrastructure.event.handler.IEventHandler;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,10 +19,11 @@ public class ActivityOrderCreatedEventHandler implements IEventHandler {
      * @param event 事件
      */
     @Override
-    public void handle(Event event) {
+    public boolean handle(Event event) {
         String orderId = event.getBody().toString();
         // todo 风控检查
         log.info("模拟对订单进行风控检查,{}", orderId);
+        return true;
     }
 
     @Override

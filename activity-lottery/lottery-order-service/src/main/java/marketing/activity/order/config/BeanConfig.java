@@ -1,7 +1,7 @@
 package marketing.activity.order.config;
 
-import marketing.activity.order.event.handler.IEventHandler;
-import org.example.marketing.common.mq.Event;
+import marketing.activity.infrastructure.event.Event;
+import marketing.activity.infrastructure.event.handler.IEventHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

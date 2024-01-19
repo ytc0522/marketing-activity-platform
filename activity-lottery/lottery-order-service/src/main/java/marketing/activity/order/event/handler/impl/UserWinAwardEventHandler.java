@@ -2,14 +2,14 @@ package marketing.activity.order.event.handler.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson.JSON;
-import marketing.activity.order.event.handler.IEventHandler;
-import marketing.activity.order.mq.producer.EventProducer;
+import marketing.activity.infrastructure.event.Event;
+import marketing.activity.infrastructure.event.handler.IEventHandler;
+import marketing.activity.infrastructure.mq.producer.EventProducer;
 import marketing.activity.order.repository.entity.LotteryOrder;
 import marketing.activity.order.repository.mapper.LotteryOrderMapper;
 import marketing.activity.order.utils.RedisUtil;
 import marketing.activity.order.utils.SnowFlakeUtil;
 import org.example.marketing.common.dto.UserWinAwardDto;
-import org.example.marketing.common.mq.Event;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -36,7 +36,7 @@ public class UserWinAwardEventHandler implements IEventHandler {
 
 
     @Override
-    public void handle(Event event) {
+    public boolean handle(Event event) {
         String jsonString = JSON.toJSONString(event.getBody());
         UserWinAwardDto dto = JSON.parseObject(jsonString, UserWinAwardDto.class);
 
@@ -58,6 +58,7 @@ public class UserWinAwardEventHandler implements IEventHandler {
         orderCreatedEvent.setType(Event.Type.ACTIVITY_ORDER_CREATED);
 
         // eventProducer.publishWithRecord(orderCreatedEvent);
+        return true;
 
     }
 

@@ -6,7 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lottery-rpc</module>
-        <module>lottery-repository</module>
+        <module>lottery-infrastructure</module>
         <module>lottery-service</module>
         <module>lottery-order-service</module>
         <module>lottery-order-rpc</module>
