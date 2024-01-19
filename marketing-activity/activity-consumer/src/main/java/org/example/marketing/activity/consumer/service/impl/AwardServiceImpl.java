@@ -2,8 +2,8 @@ package org.example.marketing.activity.consumer.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.example.activity.repository.entity.Award;
-import org.example.activity.repository.mapper.AwardMapper;
+import marketing.activity.infrastructure.repository.entity.Award;
+import marketing.activity.infrastructure.repository.mapper.AwardMapper;
 import org.example.marketing.activity.consumer.service.AwardService;
 import org.springframework.stereotype.Service;
 

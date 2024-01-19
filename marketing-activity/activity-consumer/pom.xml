@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>activity-repository</artifactId>
+            <artifactId>activity-infrastructure</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

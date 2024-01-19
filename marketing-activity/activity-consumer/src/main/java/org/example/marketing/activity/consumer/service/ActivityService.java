@@ -1,7 +1,7 @@
 package org.example.marketing.activity.consumer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.activity.repository.entity.Activity;
+import marketing.activity.infrastructure.repository.entity.Activity;
 import org.example.marketing.common.ActionResult;
 import org.example.marketing.common.dto.UserWinAwardDto;
 import org.example.marketing.common.req.activity.TakeActivityReq;

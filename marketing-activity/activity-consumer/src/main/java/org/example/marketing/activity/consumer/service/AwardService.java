@@ -1,7 +1,7 @@
 package org.example.marketing.activity.consumer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.activity.repository.entity.Award;
+import marketing.activity.infrastructure.repository.entity.Award;
 
 /**
 * @author jack

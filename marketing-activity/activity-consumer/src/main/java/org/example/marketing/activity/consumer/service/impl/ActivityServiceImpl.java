@@ -2,14 +2,14 @@ package org.example.marketing.activity.consumer.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import marketing.activity.infrastructure.repository.entity.Activity;
+import marketing.activity.infrastructure.repository.entity.UserTakeActivityRecord;
+import marketing.activity.infrastructure.repository.mapper.ActivityMapper;
 import marketing.lottery.rpc.ILotteryRpcService;
 import marketing.lottery.rpc.dto.WinAward;
 import marketing.lottery.rpc.req.LotteryDrawReq;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.example.activity.repository.entity.Activity;
-import org.example.activity.repository.entity.UserTakeActivityRecord;
-import org.example.activity.repository.mapper.ActivityMapper;
 import org.example.marketing.activity.consumer.mq.producer.EventProducer;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.example.marketing.activity.consumer.service.AwardService;

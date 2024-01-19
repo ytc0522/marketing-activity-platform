@@ -22,7 +22,7 @@
         <module>activity-admin</module>
         <module>activity-consumer</module>
         <module>activity-common</module>
-        <module>activity-repository</module>
+        <module>activity-infrastructure</module>
     </modules>
 
 </project>

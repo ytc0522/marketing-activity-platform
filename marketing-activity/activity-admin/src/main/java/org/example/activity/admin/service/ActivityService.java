@@ -1,8 +1,8 @@
 package org.example.activity.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.activity.repository.entity.Activity;
-import org.example.marketing.common.ActionResult;
+import marketing.activity.infrastructure.repository.entity.Activity;
+import marketing.lottery.rpc.dto.ActionResult;
 
 /**
 * @author jack

@@ -1,8 +1,8 @@
 package org.example.marketing.activity.consumer.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.example.activity.repository.entity.MqMsgSendFailRecord;
-import org.example.activity.repository.mapper.MqMsgSendFailRecordMapper;
+import marketing.activity.infrastructure.repository.entity.MqMsgSendFailRecord;
+import marketing.activity.infrastructure.repository.mapper.MqMsgSendFailRecordMapper;
 import org.example.marketing.activity.consumer.service.MqMsgSendFailRecordService;
 import org.springframework.stereotype.Service;
 

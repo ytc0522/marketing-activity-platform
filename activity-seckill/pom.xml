@@ -12,14 +12,14 @@
     <artifactId>activity-seckill</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>seckill-repository</module>
-        <module>seckill-service</module>
+        <module>seckill-infrastructure</module>
+        <module>seckill-application</module>
         <module>seckill-rpc</module>
-        <module>seckill-order-service</module>
-        <module>seckill-order-rpc</module>
-        <module>seckill-admin-api</module>
-        <module>seckill-consumer-api</module>
-        <module>seckill-merchant-api</module>
+        <module>seckill-domain-order</module>
+        <module>seckill-domain-order-rpc</module>
+        <module>seckill-api-admin</module>
+        <module>seckill-api-consumer</module>
+        <module>seckill-api-merchant</module>
     </modules>
 
     <properties>

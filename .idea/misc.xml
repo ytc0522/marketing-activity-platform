@@ -134,28 +134,8 @@
         <option value="$PROJECT_DIR$/activity-lottery/lottery-rpc/pom.xml" />
         <option value="$PROJECT_DIR$/activity-lottery/lottery-service/pom.xml" />
         <option value="$PROJECT_DIR$/activity-lottery/pom.xml" />
-      </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/activity-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-order/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-seckill/seckill-application/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-seckill/seckill-domain/pom.xml" />
         <option value="$PROJECT_DIR$/activity-seckill/seckill-infrastructure/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-seckill/seckill-interfaces/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-seckill/seckill-nginx/pom.xml" />
-        <option value="$PROJECT_DIR$/activity-seckill/seckill-starter/pom.xml" />
-        <option value="$PROJECT_DIR$/dispatch-job/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-api/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-app/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-common/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-domain/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-infrastructure/pom.xml" />
-        <option value="$PROJECT_DIR$/lottery/lottery-interfaces/pom.xml" />
-        <option value="$PROJECT_DIR$/marketing-activity/activity-order/pom.xml" />
-        <option value="$PROJECT_DIR$/red-packet/pom.xml" />
-      </set>
+      </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">

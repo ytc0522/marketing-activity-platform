@@ -2,8 +2,8 @@ package org.example.marketing.activity.consumer.mq.producer;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
-import org.example.activity.repository.entity.MqMsgSendFailRecord;
-import org.example.activity.repository.mapper.MqMsgSendFailRecordMapper;
+import marketing.activity.infrastructure.repository.entity.MqMsgSendFailRecord;
+import marketing.activity.infrastructure.repository.mapper.MqMsgSendFailRecordMapper;
 import org.example.marketing.common.mq.Event;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;

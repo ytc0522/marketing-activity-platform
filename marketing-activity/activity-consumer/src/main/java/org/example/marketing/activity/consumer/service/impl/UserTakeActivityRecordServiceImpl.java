@@ -1,8 +1,8 @@
 package org.example.marketing.activity.consumer.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.example.activity.repository.entity.UserTakeActivityRecord;
-import org.example.activity.repository.mapper.UserTakeActivityRecordMapper;
+import marketing.activity.infrastructure.repository.entity.UserTakeActivityRecord;
+import marketing.activity.infrastructure.repository.mapper.UserTakeActivityRecordMapper;
 import org.example.marketing.activity.consumer.service.UserTakeActivityRecordService;
 import org.springframework.stereotype.Service;
 
