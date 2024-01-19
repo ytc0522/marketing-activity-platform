@@ -1,8 +1,7 @@
 package marketing.activity.infrastructure.event;
 
 import lombok.Data;
-
-import java.util.UUID;
+import marketing.activity.infrastructure.util.SnowflakeUtil;
 
 @Data
 public class Event<T> {
@@ -15,7 +14,7 @@ public class Event<T> {
     private T body;
 
     public Event() {
-        this.eventId = UUID.randomUUID().toString();
+        this.eventId = SnowflakeUtil.nextIdStr();
     }
 
 
