@@ -8,4 +8,4 @@ spring:
       discovery:
         server-addr: hadoop101:8848
         register-enabled: true
-        service: activity-gateway
+        service: seckill-consumer

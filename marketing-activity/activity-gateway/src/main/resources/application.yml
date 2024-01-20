@@ -18,8 +18,8 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: seckill
-          uri: http://localhost:8210
+        - id: seckill-consumer
+          uri: lb://seckill-consumer
           predicates:
             - Path=/activity/seckill/**
 

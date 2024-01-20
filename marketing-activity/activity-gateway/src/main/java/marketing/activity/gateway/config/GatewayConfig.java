@@ -42,7 +42,7 @@ public class GatewayConfig {
      */
     private void initGatewayRules() {
         Set<GatewayFlowRule> rules = new HashSet<>();
-        rules.add(new GatewayFlowRule("seckill")
+        rules.add(new GatewayFlowRule("seckill-consumer")
                 .setCount(10000)    // 限流阈值
                 .setIntervalSec(1));   // 统计时间窗口，单位是秒，默认是 1 秒
         // 加载网关限流规则
