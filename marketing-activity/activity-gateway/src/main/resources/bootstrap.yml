@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: activity-gateway
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hadoop101:8848
+        register-enabled: true
+        service: activity-gateway

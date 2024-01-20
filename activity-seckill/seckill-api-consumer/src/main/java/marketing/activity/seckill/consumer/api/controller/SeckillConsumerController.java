@@ -16,6 +16,12 @@ public class SeckillConsumerController {
     @DubboReference
     private ISeckillRpcService seckillRpcService;
 
+
+    @GetMapping("/hello")
+    public ActionResult hello() {
+        return ActionResult.success("HI");
+    }
+
     /**
      * 秒杀接口
      * 异步处理

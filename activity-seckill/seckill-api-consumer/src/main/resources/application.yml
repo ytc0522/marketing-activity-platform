@@ -5,6 +5,9 @@ server:
 # 设置nacos的地址（配置中心）
 nacos:
   discovery:
+    register:
+      enabled: true
+      service-name: seckill-consumer-api
     server-addr: hadoop101:8848
 
 # Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
