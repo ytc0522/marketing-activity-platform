@@ -16,6 +16,10 @@ spring:
     timeout: 3000       # Redis服务器链接超时配置
 
   cloud:
+    sentinel:
+      transport:
+        dashboard: hadoop101:8858
+        port: 8719
     gateway:
       routes:
         - id: seckill-consumer
