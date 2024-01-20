@@ -26,6 +26,10 @@ spring:
           uri: lb://seckill-consumer
           predicates:
             - Path=/activity/seckill/**
+        - id: lottery-consumer
+          uri: lb://lottery-consumer
+          predicates:
+            - Path=/activity/lottery/**
 
 
 

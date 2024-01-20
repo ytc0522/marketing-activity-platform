@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: activity-lottery
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hadoop101:8848
+        register-enabled: true
+        service: lottery-consumer

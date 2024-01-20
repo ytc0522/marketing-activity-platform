@@ -3,12 +3,13 @@ server:
 
 
 # 设置nacos的地址（配置中心）
-nacos:
-  discovery:
-    register:
-      enabled: true
-      service-name: seckill-consumer-api
-    server-addr: hadoop101:8848
+#nacos:
+#  discovery:
+#    register:
+#      enabled: true
+#      service-name: seckill-consumer-api
+#      server-addr: hadoop101:8848
+
 
 # Dubbo 广播方式配置，如果调用不稳定可以修改为直连模式：https://codechina.csdn.net/KnowledgePlanet/Lottery/-/issues/1
 dubbo:
@@ -21,64 +22,7 @@ dubbo:
     name: dubbo
     port: -1
 
-# Mybatis
-mybatis-plus:
-  global-config:
-    banner: false
-    db-config:
-      id-type: ID_WORKER
-      logic-delete-value: 1
-      logic-not-delete-value: 0
-      insert-strategy: NOT_NULL
-      update-strategy: NOT_NULL
-  configuration:
-    cache-enabled: false
-    map-underscore-to-camel-case: true
-    call-setters-on-nulls: true
-    jdbc-type-for-null: 'null'
 
-spring:
-  application:
-    name: activity-seckill-consumer-api
-
-  cloud:
-    stream:
-      binders:
-        defaultRabbit:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: hadoop101
-                port: 5672
-                username: root
-                password: 123456
-                virtual-host: seckill
-      rabbit:
-        bindings:
-          input:
-            consumer:
-              acknowledge-mode: manual
-      bindings:
-        input:
-          destination: ACTIVITY_EVENT_TOPIC
-          group: ${spring.application.name}
-        output:
-          destination: ACTIVITY_EVENT_TOPIC
-          group: ${spring.application.name}
-
-xxl:
-  job:
-    admin:
-      addresses: http://hadoop101:8800/xxl-job-admin
-    executor:
-      appname: ${spring.application.name}
-      address:
-      ip:
-      port: 9999
-      logpath: /Users/jack/Development/data/logs/xxl-job/
-      logretentiondays: 30
-    accessToken: onelovehzs888
 
 
 
