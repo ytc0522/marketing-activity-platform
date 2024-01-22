@@ -135,7 +135,16 @@
         <option value="$PROJECT_DIR$/activity-lottery/lottery-service/pom.xml" />
         <option value="$PROJECT_DIR$/activity-lottery/pom.xml" />
         <option value="$PROJECT_DIR$/activity-seckill/seckill-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-support/rule-engine/rule-engine-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-support/rule-engine/rule-engine-groovy/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/marketing-user/marketing-user-buyer/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-user/marketing-user-operation/pom.xml" />
+        <option value="$PROJECT_DIR$/marketing-user/marketing-user-seller/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">

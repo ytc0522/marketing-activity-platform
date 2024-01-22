@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+rule.engine.groovy.config.GroovyRedisLoaderAutoConfiguration,rule.engine.groovy.config.EnhanceGroovyEngineCoreAutoConfiguration

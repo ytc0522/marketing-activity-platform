@@ -14,6 +14,8 @@
         <module>activity-seckill</module>
         <module>activity-pintuan</module>
         <module>marketing-support</module>
+        <module>marketing-user</module>
+        <module>marketing-reward</module>
     </modules>
 
     <properties>

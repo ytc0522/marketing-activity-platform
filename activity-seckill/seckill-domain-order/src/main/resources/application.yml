@@ -83,7 +83,7 @@ spring:
   # sharding-jdbc
   shardingsphere:
     datasource:
-      names: ds-order-1,ds-order-2,ds-order-3,ds-order-4
+      names: ds-order-1,ds-order-2
       ds-order-1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -96,23 +96,11 @@ spring:
         jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_seckill_2
         username: root
         password: rootroot
-      ds-order-3:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_seckill_3
-        username: root
-        password: rootroot
-      ds-order-4:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_seckill_4
-        username: root
-        password: rootroot
     # 分片策略配置
     sharding:
       tables:
         seckill_order:
-          actual-data-nodes: ds-order-${1..4}.seckill_order_$->{0..7}
+          actual-data-nodes: ds-order-${1..2}.seckill_order_$->{0..1}
           table-strategy:
             standard:
               sharding-column: user_id

@@ -7,7 +7,7 @@
     <modules>
         <module>lottery-rpc</module>
         <module>lottery-infrastructure</module>
-        <module>lottery-service</module>
+        <module>lottery-application</module>
         <module>lottery-order-service</module>
         <module>lottery-order-rpc</module>
         <module>lottery-consumer-api</module>

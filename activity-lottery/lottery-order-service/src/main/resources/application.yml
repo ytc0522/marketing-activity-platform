@@ -83,36 +83,25 @@ spring:
   # sharding-jdbc
   shardingsphere:
     datasource:
-      names: ds-order-1,ds-order-2,ds-order-3,ds-order-4
+      names: ds-order-1,ds-order-2
       ds-order-1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_lottery_1
+        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_1
         username: root
         password: rootroot
       ds-order-2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_lottery_2
+        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_2
         username: root
         password: rootroot
-      ds-order-3:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_lottery_3
-        username: root
-        password: rootroot
-      ds-order-4:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://hadoop101:3306/activity_order_lottery_4
-        username: root
-        password: rootroot
+
     # 分片策略配置
     sharding:
       tables:
         lottery_order:
-          actual-data-nodes: ds-order-${1..4}.lottery_order_$->{0..7}
+          actual-data-nodes: ds-order-${1..2}.lottery_order_$->{0..1}
           table-strategy:
             standard:
               sharding-column: user_id

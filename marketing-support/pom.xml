@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>rule-engine</module>
+        <module>risk-control</module>
     </modules>
     <parent>
         <groupId>org.example</groupId>
