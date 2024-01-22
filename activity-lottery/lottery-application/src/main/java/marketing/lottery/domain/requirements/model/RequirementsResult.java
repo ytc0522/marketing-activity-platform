@@ -22,6 +22,10 @@ public class RequirementsResult {
         return requirementsResult;
     }
 
+    public boolean isOk() {
+        return this.able;
+    }
+
     public static RequirementsResult notOK() {
         RequirementsResult requirementsResult = new RequirementsResult();
         requirementsResult.setAble(false);

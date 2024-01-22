@@ -1,8 +1,8 @@
 package marketing.lottery;
 
 
+import marketing.activity.infrastructure.util.RedisUtil;
 import marketing.lottery.repository.entity.LotteryActivity;
-import marketing.lottery.repository.util.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import marketing.activity.lottery.order.ILotteryOrderRpcService;
 import marketing.activity.lottery.order.dto.LotteryWinAwardDto;
 import marketing.lottery.domain.pool.ILotteryAwardPool;
+import marketing.lottery.domain.requirements.IActivityRequirements;
+import marketing.lottery.domain.requirements.model.RequirementsReq;
+import marketing.lottery.domain.requirements.model.RequirementsResult;
 import marketing.lottery.domain.stock.ILotteryAwardStockStorage;
 import marketing.lottery.rpc.constants.Constants;
 import marketing.lottery.rpc.dto.LotteryActivityDto;
@@ -38,6 +41,9 @@ public class LotteryActivityRpcServiceImpl implements ILotteryRpcService {
 
     private Snowflake snowflake = new Snowflake();
 
+    @Resource
+    private IActivityRequirements activityRequirements;
+
 
     @Override
     public boolean prepare(Long activityId) {
@@ -55,6 +61,13 @@ public class LotteryActivityRpcServiceImpl implements ILotteryRpcService {
         LotteryWinAwardDto lotteryAward = new LotteryWinAwardDto();
 
         // 先判断用户是否具备参加活动的资格
+        RequirementsReq requirementsReq = RequirementsReq.builder().activityId(req.getActivityId()).userId(req.getUserId()).build();
+        RequirementsResult result = activityRequirements.check(requirementsReq);
+        if (!result.isOk()) {
+            log.warn("当前你还不具备条件：{}", result.getReason());
+            return null;
+        }
+
         // 从缓存中获取 抽奖相关信息
         LotteryActivityRich lotteryActivityRich = lotteryActivityService.getFromCache(req.getActivityId());
 

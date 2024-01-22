@@ -2,10 +2,10 @@ package marketing.lottery.domain.stock;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import lombok.extern.slf4j.Slf4j;
+import marketing.activity.infrastructure.util.RedisUtil;
 import marketing.lottery.repository.entity.LotteryAward;
 import marketing.lottery.repository.mapper.LotteryActivityMapper;
 import marketing.lottery.repository.mapper.LotteryAwardMapper;
-import marketing.lottery.repository.util.RedisUtil;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Service;

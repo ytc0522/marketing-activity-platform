@@ -2,7 +2,7 @@ package marketing.lottery.domain.pool;
 
 import cn.hutool.core.lang.UUID;
 import lombok.extern.slf4j.Slf4j;
-import marketing.lottery.repository.util.RedisUtil;
+import marketing.activity.infrastructure.util.RedisUtil;
 import marketing.lottery.rpc.constants.Constants;
 import marketing.lottery.rpc.dto.LotteryActivityRich;
 import marketing.lottery.rpc.dto.LotteryAwardDto;
