@@ -11,7 +11,7 @@ import rule.engine.groovy.loader.helper.ManualRegisterScriptHelper;
 
 import javax.annotation.Resource;
 
-@RestController
+@RestController("ruleEngineTestController")
 @RequestMapping("/ruleEngine")
 public class RuleEngineTestController {
 

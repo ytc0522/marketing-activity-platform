@@ -158,4 +158,9 @@ public class ApplicationContextHelper implements ApplicationContextAware {
         return false;
     }
 
+
+    public static <T> T getBean(Class<T> beanClazz) {
+        return context.getBean(beanClazz);
+    }
+
 }

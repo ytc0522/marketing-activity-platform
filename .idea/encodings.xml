@@ -3,10 +3,22 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/activity-admin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/base-rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-base/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-admin-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-admin-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-app/src/main/java" charset="UTF-8" />
@@ -101,8 +113,6 @@
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-consumer/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/marketing-activity/activity-gateway/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/marketing-activity/activity-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-infrastructure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/marketing-activity/activity-order/src/main/java" charset="UTF-8" />

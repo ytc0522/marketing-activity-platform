@@ -21,10 +21,6 @@ import rule.engine.groovy.registry.impl.DefaultScriptRegistry;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <p>
- * 核心自动配置类 ，配置文件中必须要有 {@code enhance.groovy.engine.enable}配置并且值为true时才开启
- * {@link GroovyEngineProperties#isEnable()}
- * </p>
  *
  * @author wenpan 2022/09/18 18:11
  */

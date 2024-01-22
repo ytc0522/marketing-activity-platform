@@ -13,9 +13,11 @@
         <module>activity-lottery</module>
         <module>activity-seckill</module>
         <module>activity-pintuan</module>
+        <module>activity-gateway</module>
         <module>marketing-support</module>
         <module>marketing-user</module>
         <module>marketing-reward</module>
+        <module>activity-base</module>
     </modules>
 
     <properties>

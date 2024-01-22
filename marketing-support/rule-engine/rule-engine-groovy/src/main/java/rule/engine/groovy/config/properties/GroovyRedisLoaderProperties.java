@@ -29,11 +29,6 @@ public class GroovyRedisLoaderProperties implements InitializingBean, Environmen
      */
     private String namespace;
 
-    /**
-     * 开启基于 Redis 的脚本加载器
-     */
-    private boolean enable = false;
-
     @Override
     public void afterPropertiesSet() throws Exception {
         // 如果没有配置namespace，则默认和应用名保持一致
