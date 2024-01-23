@@ -20,10 +20,28 @@ public class Event<T> {
 
     public enum Type {
 
-        ACTIVITY_ORDER_CREATED,
-        USER_WIN_AWARD,
         /**
-         * 用户抢到了商品
+         * 用户参加活动日志
+         */
+        USER_TAKE_ACTIVITY,
+
+        /**
+         * 用户完成活动
+         */
+        USER_FINISH_ACTIVITY,
+
+        /**
+         * 活动订单已创建
+         */
+        ACTIVITY_ORDER_CREATED,
+
+        /**
+         * 用户获得奖品
+         */
+        USER_WIN_AWARD,
+
+        /**
+         * 用户在秒杀活动中抢到了商品
          */
         SECKILL_USER_WIN_GOODS
 
