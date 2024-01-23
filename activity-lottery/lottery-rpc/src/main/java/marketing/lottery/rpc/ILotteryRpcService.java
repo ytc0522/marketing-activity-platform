@@ -1,6 +1,6 @@
 package marketing.lottery.rpc;
 
-import marketing.activity.lottery.order.dto.LotteryWinAwardDto;
+import marketing.lottery.rpc.dto.ActionResult;
 import marketing.lottery.rpc.req.LotteryDrawReq;
 
 /**
@@ -10,6 +10,6 @@ public interface ILotteryRpcService {
 
     boolean prepare(Long activityId);
 
-    LotteryWinAwardDto draw(LotteryDrawReq req);
+    ActionResult draw(LotteryDrawReq req);
 
 }

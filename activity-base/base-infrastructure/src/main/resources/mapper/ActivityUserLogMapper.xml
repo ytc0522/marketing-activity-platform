@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="marketing.activity.base.infrastructure.repository.mapper.ActivityUserLogMapper">
+
+    <resultMap id="BaseResultMap" type="marketing.activity.base.infrastructure.repository.entity.ActivityUserLog">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="activityId" column="activity_id" jdbcType="BIGINT"/>
+        <result property="activityType" column="activity_type" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="TINYINT"/>
+        <result property="takeTime" column="take_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,activity_id,
+        activity_type,state,take_time
+    </sql>
+</mapper>

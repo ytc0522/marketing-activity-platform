@@ -23,6 +23,13 @@
             <groupId>org.example</groupId>
             <artifactId>activity-infrastructure</artifactId>
         </dependency>
+
+        <!--规则引擎-->
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>rule-engine-groovy</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -16,6 +16,32 @@ spring:
     password:           # Redis服务器连接密码（默认为空）
     timeout: 3000       # Redis服务器链接超时配置
 
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: hadoop101
+                port: 5672
+                username: root
+                password: 123456
+                virtual-host: marketing
+      rabbit:
+        bindings:
+          input:
+            consumer:
+              acknowledge-mode: manual
+      bindings:
+        input:
+          destination: ACTIVITY_EVENT_TOPIC
+          group: ${spring.application.name}
+        output:
+          destination: ACTIVITY_EVENT_TOPIC
+          group: ${spring.application.name}
+
 # nacos 配置中心
 nacos:
   discovery:
@@ -37,6 +63,8 @@ dubbo:
     threads: 300
   scan:
     base-packages: org.example.marketing.lottery.rpc
+  consumer:
+    check: false
 
 
 rule:

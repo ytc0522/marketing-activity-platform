@@ -22,7 +22,7 @@ public class LotteryConsumerController {
 
     @PostMapping("/draw")
     public ActionResult drawLottery(@RequestBody LotteryDrawReq lotteryDrawReq) {
-        return ActionResult.success(lotteryDraw.draw(lotteryDrawReq));
+        return lotteryDraw.draw(lotteryDrawReq);
     }
 
 

@@ -5,11 +5,11 @@ import com.alibaba.fastjson.JSON;
 import marketing.activity.infrastructure.event.Event;
 import marketing.activity.infrastructure.event.handler.IEventHandler;
 import marketing.activity.infrastructure.mq.producer.EventProducer;
+import marketing.activity.lottery.infrastructure.dto.UserWinAwardDto;
 import marketing.activity.order.repository.entity.LotteryOrder;
 import marketing.activity.order.repository.mapper.LotteryOrderMapper;
 import marketing.activity.order.utils.RedisUtil;
 import marketing.activity.order.utils.SnowFlakeUtil;
-import org.example.marketing.common.dto.UserWinAwardDto;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
