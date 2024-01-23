@@ -31,4 +31,12 @@ public class ActivityRequirementsRpcImpl implements IActivityBaseRpc {
         RequirementsResultDto dto = BeanUtil.copyProperties(result, RequirementsResultDto.class);
         return dto;
     }
+
+    /**
+     *
+     */
+    @Override
+    public void writeLog() {
+
+    }
 }
