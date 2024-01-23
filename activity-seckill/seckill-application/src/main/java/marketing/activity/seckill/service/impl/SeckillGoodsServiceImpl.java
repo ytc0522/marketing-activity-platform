@@ -2,15 +2,19 @@ package marketing.activity.seckill.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import marketing.activity.infrastructure.util.RedisUtil;
 import marketing.activity.seckill.infrastructure.repository.entity.SeckillGoods;
 import marketing.activity.seckill.infrastructure.repository.mapper.SeckillGoodsMapper;
 import marketing.activity.seckill.service.SeckillGoodsService;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author jack
@@ -18,6 +22,7 @@ import java.util.List;
  * @createDate 2024-01-17 16:36:27
  */
 @Service
+@Slf4j
 public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, SeckillGoods>
         implements SeckillGoodsService {
 
@@ -26,6 +31,9 @@ public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, Sec
 
     @Resource
     private RedisUtil redisUtil;
+
+    @Resource
+    private RedissonClient redissonClient;
 
 
     public String goodsCacheKey(Long activityId) {
@@ -49,11 +57,30 @@ public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, Sec
         }
 
         // 从数据库查询
-        List<SeckillGoods> list = this.lambdaQuery().eq(SeckillGoods::getActivityId, activityId)
-                .list();
+        String lockKey = "lock_seckill_goods:" + activityId;
+        RLock lock = redissonClient.getLock(lockKey);
 
-        // 放入缓存
-        redisUtil.set(key, JSON.toJSONString(list), 3600);
+        List<SeckillGoods> list = null;
+
+        try {
+
+            // 加锁的目的是防止缓存击穿，避免大量请求击垮数据库
+            lock.lock(1, TimeUnit.SECONDS);
+            list = this.lambdaQuery().eq(SeckillGoods::getActivityId, activityId)
+                    .list();
+
+            // 放入缓存
+            redisUtil.set(key, JSON.toJSONString(list), 3600);
+
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (lock.isLocked()) {
+                lock.unlock();
+            }
+        }
+
+
         return list;
     }
 
