@@ -63,9 +63,19 @@ public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, Sec
         List<SeckillGoods> list = null;
 
         try {
-
             // 加锁的目的是防止缓存击穿，避免大量请求击垮数据库
+            // 因为将从数据库中查询的结果，即使是空值，也放入到了缓存中，所以，也可以避免缓存穿透问题。
+            // 但是也有问题，就是大量的请求还是会查询数据库，只不过加了锁之后，变成串行的。
+
             lock.lock(1, TimeUnit.SECONDS);
+
+            // 为了降低对数据库的压力，可以再查询一次Redis。
+            value = redisUtil.get(key);
+            if (value != null) {
+                List<SeckillGoods> seckillGoods = JSON.parseArray((String) value, SeckillGoods.class);
+                return seckillGoods;
+            }
+
             list = this.lambdaQuery().eq(SeckillGoods::getActivityId, activityId)
                     .list();
 
@@ -73,7 +83,7 @@ public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, Sec
             redisUtil.set(key, JSON.toJSONString(list), 3600);
 
         } catch (Exception e) {
-            throw e;
+            log.error("异常信息", e);
         } finally {
             if (lock.isLocked()) {
                 lock.unlock();
