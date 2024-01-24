@@ -18,6 +18,7 @@
         <module>marketing-user</module>
         <module>marketing-reward</module>
         <module>activity-base</module>
+        <module>activity-infrastructure</module>
     </modules>
 
     <properties>
