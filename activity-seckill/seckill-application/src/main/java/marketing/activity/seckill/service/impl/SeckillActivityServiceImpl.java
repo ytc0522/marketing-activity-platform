@@ -61,6 +61,9 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
     @Resource
     private EventProducer eventProducer;
 
+    @Resource
+    private ISeckillOrderFacade orderFacade;
+
 
     public ActionResult seckillSync(SeckillReq req) {
 
@@ -157,9 +160,27 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
         // 查询现在的库存
         Integer stock = seckillActivityRedisStock.queryStock(activityId, goodsId);
 
+
+        // 直接生成数据库订单
+        SeckillOrderCreateReq createReq = SeckillOrderCreateReq.builder()
+                .userId(req.getUserId())
+                .goodsId(req.getGoodsId())
+                .activityId(req.getActivityId())
+                .orderId(snowflake.nextIdStr())
+                .build();
+
+
+        boolean created = orderFacade.createSeckillOrder(createReq);
+
+
+        if (created) {
+            // 发布订单已创建事件
+        }
+
+
         // 发送MQ消息
-        publishSeckillWinGoodsMsq(req, stock);
-        return ActionResult.success();
+        String eventId = publishSeckillWinGoodsMsq(req, stock);
+        return ActionResult.success(eventId);
     }
 
     /**
@@ -167,7 +188,7 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
      *
      * @param req
      */
-    private void publishSeckillWinGoodsMsq(SeckillReq req, Integer availableStock) {
+    private String publishSeckillWinGoodsMsq(SeckillReq req, Integer availableStock) {
         // 发送抢购成功消息
         SeckillWinGoods seckillWinGoods = new SeckillWinGoods();
         seckillWinGoods.setActivityId(req.getActivityId());
@@ -179,6 +200,7 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
         event.setBody(seckillWinGoods);
         event.setType(Event.Type.SECKILL_USER_WIN_GOODS);
         eventProducer.publish(event);
+        return event.getEventId();
     }
 
 
