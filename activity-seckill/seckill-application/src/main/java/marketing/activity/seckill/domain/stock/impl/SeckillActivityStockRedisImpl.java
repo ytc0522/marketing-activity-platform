@@ -6,17 +6,20 @@ import marketing.activity.infrastructure.util.RedisUtil;
 import marketing.activity.seckill.domain.stock.ISeckillActivityStock;
 import marketing.activity.seckill.infrastructure.repository.entity.SeckillGoods;
 import marketing.activity.seckill.service.SeckillGoodsService;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Service
+@Component
 public class SeckillActivityStockRedisImpl implements ISeckillActivityStock {
 
     @Resource
@@ -34,6 +37,9 @@ public class SeckillActivityStockRedisImpl implements ISeckillActivityStock {
                     "    return 0\n" +
                     "end";
 
+    @Resource
+    private RedissonClient redissonClient;
+
 
     private String stockCacheKey(Long activityId) {
         return "Seckill:Stock:" + activityId;
@@ -47,16 +53,32 @@ public class SeckillActivityStockRedisImpl implements ISeckillActivityStock {
     @Override
     public void beforeActivityStart(Long activityId) {
         String stockCacheKey = stockCacheKey(activityId);
-        Object value = redisUtil.get(stockCacheKey);
-        if (value != null) {
+        if (redisUtil.hasKey(stockCacheKey)) {
             return;
         }
-        List<SeckillGoods> seckillGoods = goodsService.queryByActivityId(activityId);
-        if (CollectionUtils.isEmpty(seckillGoods)) {
-            return;
-        }
-        for (SeckillGoods seckillGood : seckillGoods) {
-            redisUtil.hset(stockCacheKey, seckillGood.getGoodsId(), seckillGood.getAvailableCount());
+        RLock lock = redissonClient.getLock("lock_seckill_stock:" + activityId);
+
+        try {
+            lock.lock(2, TimeUnit.SECONDS);
+
+            // 二次查询缓存，减少对数据库请求
+            if (redisUtil.hasKey(stockCacheKey)) {
+                return;
+            }
+
+            List<SeckillGoods> seckillGoods = goodsService.queryByActivityId(activityId);
+            if (CollectionUtils.isEmpty(seckillGoods)) {
+                return;
+            }
+            for (SeckillGoods seckillGood : seckillGoods) {
+                redisUtil.hset(stockCacheKey, seckillGood.getGoodsId(), seckillGood.getAvailableCount());
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (lock.isHeldByCurrentThread()) {
+                lock.unlock();
+            }
         }
     }
 

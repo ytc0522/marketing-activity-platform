@@ -116,12 +116,13 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
     }
 
     /**
-     *
+     * @param activityId
      */
     @Override
     public void preHeat(Long activityId) {
         seckillActivityRedisStock.beforeActivityStart(activityId);
     }
+
 
     /**
      * @param req
@@ -129,6 +130,9 @@ public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMappe
      */
     @Override
     public ActionResult seckillAsync(SeckillReq req) {
+
+        // 判断缓存是否加载到
+        seckillActivityRedisStock.beforeActivityStart(req.getActivityId());
 
         // 根据活动ID找到秒杀商品
         Long activityId = req.getActivityId();

@@ -15,10 +15,6 @@ public class SeckillServiceRpcImplTest {
     @Resource
     private ISeckillRpcService seckillRpcService;
 
-    @Test
-    public void preheat() {
-        seckillRpcService.preheat(10010L);
-    }
 
     @Test
     public void seckillAsync() {
