@@ -10,6 +10,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "rootroot"
       TZ: Asia/Shanghai
+    volumes:
+      - /data/mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/my.cnf:/etc/my.cnf
+
+
 
   redis:
     image: redis:6.0.8
