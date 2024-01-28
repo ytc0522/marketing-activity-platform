@@ -141,6 +141,9 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/activity-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-lottery/lottery-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/activity-order/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-user/marketing-user-buyer/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-user/marketing-user-operation/pom.xml" />
         <option value="$PROJECT_DIR$/marketing-user/marketing-user-seller/pom.xml" />

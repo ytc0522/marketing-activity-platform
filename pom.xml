@@ -19,6 +19,7 @@
         <module>marketing-reward</module>
         <module>activity-base</module>
         <module>activity-infrastructure</module>
+        <module>activity-backend</module>
     </modules>
 
     <properties>

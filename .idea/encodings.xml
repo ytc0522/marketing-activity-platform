@@ -3,6 +3,8 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/activity-admin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-backend/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-backend/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-base/base-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-base/base-application/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-base/base-domain/src/main/java" charset="UTF-8" />
@@ -17,6 +19,8 @@
     <file url="file://$PROJECT_DIR$/activity-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-infrastructure/src/main/java" charset="UTF-8" />
@@ -31,6 +35,8 @@
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-consumer-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-consumer-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/activity-lottery/lottery-controller/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/activity-lottery/lottery-infrastructure/src/main/java" charset="UTF-8" />
