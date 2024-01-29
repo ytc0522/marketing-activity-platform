@@ -11,11 +11,10 @@ import marketing.activity.infrastructure.event.body.UserActivityLogEventBody;
 import marketing.activity.lottery.domain.pool.ILotteryAwardPool;
 import marketing.activity.lottery.domain.stock.ILotteryAwardStockStorage;
 import marketing.activity.lottery.order.ILotteryOrderRpcService;
+import marketing.activity.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.dto.LotteryActivityRich;
+import marketing.activity.lottery.rpc.req.LotteryDrawReq;
 import marketing.activity.lottery.service.LotteryActivityService;
-import marketing.lottery.rpc.ILotteryRpcService;
-import marketing.lottery.rpc.dto.ActionResult;
-import marketing.lottery.rpc.dto.LotteryActivityRich;
-import marketing.lottery.rpc.req.LotteryDrawReq;
 import org.apache.dubbo.config.annotation.DubboReference;
 
 import javax.annotation.Resource;

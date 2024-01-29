@@ -1,4 +1,4 @@
-package marketing.lottery;
+package marketing.activity.lottery;
 
 
 import marketing.activity.infrastructure.util.RedisUtil;

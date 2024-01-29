@@ -1,4 +1,4 @@
-package marketing.lottery.rpc.dto;
+package marketing.activity.lottery.rpc.dto;
 
 /**
  * @author : CM

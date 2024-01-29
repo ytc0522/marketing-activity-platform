@@ -3,9 +3,9 @@ package marketing.activity.lottery.domain.pool;
 import cn.hutool.core.lang.UUID;
 import lombok.extern.slf4j.Slf4j;
 import marketing.activity.infrastructure.util.RedisUtil;
-import marketing.lottery.rpc.constants.Constants;
-import marketing.lottery.rpc.dto.LotteryActivityRich;
-import marketing.lottery.rpc.dto.LotteryAwardDto;
+import marketing.activity.lottery.rpc.constants.Constants;
+import marketing.activity.lottery.rpc.dto.LotteryActivityRich;
+import marketing.activity.lottery.rpc.dto.LotteryAwardDto;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;

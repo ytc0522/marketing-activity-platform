@@ -1,4 +1,4 @@
-package marketing.lottery.rpc.req;
+package marketing.activity.lottery.rpc.req;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package org.example.marketing.activity.consumer.controller;
 
-import marketing.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.dto.ActionResult;
 import org.example.marketing.activity.consumer.model.dto.TakeActivityReq;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

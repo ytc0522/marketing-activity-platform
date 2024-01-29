@@ -1,4 +1,4 @@
-package marketing.lottery.rpc.constants;
+package marketing.activity.lottery.rpc.constants;
 
 
 public class Constants {

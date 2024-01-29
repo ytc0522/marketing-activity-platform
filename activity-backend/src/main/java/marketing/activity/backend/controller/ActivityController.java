@@ -1,9 +1,9 @@
 package marketing.activity.backend.controller;
 
-import marketing.lottery.rpc.ILotteryBackendRpcService;
-import marketing.lottery.rpc.dto.LotteryActivityDto;
-import marketing.lottery.rpc.dto.PageData;
-import marketing.lottery.rpc.req.ActivityQueryReq;
+import marketing.activity.lottery.rpc.ILotteryBackendRpcService;
+import marketing.activity.lottery.rpc.dto.LotteryActivityDto;
+import marketing.activity.lottery.rpc.dto.PageData;
+import marketing.activity.lottery.rpc.req.ActivityQueryReq;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

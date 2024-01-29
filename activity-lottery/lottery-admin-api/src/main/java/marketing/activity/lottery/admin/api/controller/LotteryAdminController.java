@@ -1,7 +1,7 @@
 package marketing.activity.lottery.admin.api.controller;
 
-import marketing.lottery.rpc.ILotteryRpcService;
-import marketing.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.ILotteryRpcService;
+import marketing.activity.lottery.rpc.dto.ActionResult;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

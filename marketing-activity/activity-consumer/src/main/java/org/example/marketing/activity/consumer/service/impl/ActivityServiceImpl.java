@@ -1,6 +1,6 @@
 package org.example.marketing.activity.consumer.service.impl;
 
-import marketing.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.dto.ActionResult;
 import org.example.marketing.activity.consumer.model.dto.TakeActivityReq;
 import org.example.marketing.activity.consumer.service.ActivityService;
 import org.springframework.stereotype.Service;

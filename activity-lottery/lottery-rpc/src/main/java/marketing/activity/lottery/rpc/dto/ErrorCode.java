@@ -1,4 +1,4 @@
-package marketing.lottery.rpc.dto;
+package marketing.activity.lottery.rpc.dto;
 
 /**
  * @author : CM
@@ -19,7 +19,7 @@ public enum ErrorCode implements IErrorCode {
     private String msg;
 
     ErrorCode(int code, String msg) {
-        this.code = IErrorCode.BASE_CODE + code;
+        this.code = BASE_CODE + code;
         this.msg = msg;
     }
 

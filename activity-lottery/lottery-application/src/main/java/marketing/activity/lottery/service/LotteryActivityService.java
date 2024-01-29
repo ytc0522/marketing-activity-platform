@@ -2,9 +2,9 @@ package marketing.activity.lottery.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import marketing.activity.lottery.infrastructure.repository.entity.LotteryActivity;
-import marketing.lottery.rpc.dto.ActionResult;
-import marketing.lottery.rpc.dto.LotteryActivityRich;
-import marketing.lottery.rpc.req.LotteryDrawReq;
+import marketing.activity.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.dto.LotteryActivityRich;
+import marketing.activity.lottery.rpc.req.LotteryDrawReq;
 
 /**
  * @author jack

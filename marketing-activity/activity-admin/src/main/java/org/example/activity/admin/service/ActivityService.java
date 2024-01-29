@@ -2,7 +2,7 @@ package org.example.activity.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import marketing.activity.infrastructure.repository.entity.Activity;
-import marketing.lottery.rpc.dto.ActionResult;
+import marketing.activity.lottery.rpc.dto.ActionResult;
 
 /**
 * @author jack

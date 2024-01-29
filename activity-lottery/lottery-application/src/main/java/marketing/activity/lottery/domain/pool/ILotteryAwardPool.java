@@ -1,6 +1,6 @@
 package marketing.activity.lottery.domain.pool;
 
-import marketing.lottery.rpc.dto.LotteryActivityRich;
+import marketing.activity.lottery.rpc.dto.LotteryActivityRich;
 
 /**
  * 奖品池
